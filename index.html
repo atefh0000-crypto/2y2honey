@@ -180,6 +180,8 @@
 
     #loveButton.moving {
       position: fixed;
+      z-index: 50;
+      transition: left 0.22s ease, top 0.22s ease, transform 0.2s, box-shadow 0.2s;
     }
 
     .hint {
@@ -419,20 +421,59 @@
 
     function moveButton() {
       tries++;
+
       if (tries < 6) {
         button.classList.add("moving");
-        const pad = 30;
-        const maxX = window.innerWidth - button.offsetWidth - pad;
-        const maxY = window.innerHeight - button.offsetHeight - pad;
-        const x = Math.max(pad, Math.random() * maxX);
-        const y = Math.max(pad, Math.random() * maxY);
-        button.style.left = x + "px";
-        button.style.top = y + "px";
-        button.textContent = ["Catch me ❤️", "Almost! 😘", "Try again 🌹", "So close! 💕", "One more! ❤️"][tries - 1];
+
+        // Keep the whole button inside the visible screen.
+        const margin = 16;
+        const rect = button.getBoundingClientRect();
+
+        const buttonW = rect.width || button.offsetWidth;
+        const buttonH = rect.height || button.offsetHeight;
+
+        const maxX = Math.max(margin, window.innerWidth - buttonW - margin);
+        const maxY = Math.max(margin, window.innerHeight - buttonH - margin);
+
+        const x = margin + Math.random() * Math.max(0, maxX - margin);
+        const y = margin + Math.random() * Math.max(0, maxY - margin);
+
+        button.style.left = Math.round(
+          Math.min(Math.max(x, margin), window.innerWidth - buttonW - margin)
+        ) + "px";
+
+        button.style.top = Math.round(
+          Math.min(Math.max(y, margin), window.innerHeight - buttonH - margin)
+        ) + "px";
+
+        button.textContent = [
+          "Catch me ❤️",
+          "Almost! 😘",
+          "Try again 🌹",
+          "So close! 💕",
+          "One more! ❤️"
+        ][tries - 1];
       } else {
         showLove();
       }
     }
+
+    // If the screen size changes while the button is moving,
+    // put it back inside the viewport.
+    window.addEventListener("resize", () => {
+      if (!button.classList.contains("moving")) return;
+
+      const margin = 16;
+      const rect = button.getBoundingClientRect();
+      const w = rect.width || button.offsetWidth;
+      const h = rect.height || button.offsetHeight;
+
+      const x = Math.min(Math.max(rect.left, margin), window.innerWidth - w - margin);
+      const y = Math.min(Math.max(rect.top, margin), window.innerHeight - h - margin);
+
+      button.style.left = Math.max(margin, x) + "px";
+      button.style.top = Math.max(margin, y) + "px";
+    });
 
     button.addEventListener("mouseenter", moveButton);
     button.addEventListener("touchstart", function (e) {
