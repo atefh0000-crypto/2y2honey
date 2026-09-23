@@ -85,6 +85,8 @@
         0 0 40px rgba(255, 100, 150, 0.15);
       z-index: 5;
       transition: box-shadow 0.4s;
+      /* CRITICAL: this is the container for the button's movement */
+      overflow: hidden;
     }
 
     .card:hover {
@@ -179,8 +181,9 @@
         0 2px 0 #a8194a;
     }
 
+    /* The button moves within the card using absolute positioning */
     #loveButton.moving {
-      position: fixed;
+      position: absolute;
       transition: left 0.15s ease, top 0.15s ease;
     }
 
@@ -339,7 +342,7 @@
     <div class="rose" style="left:46%; top:4%;  font-size:38px; animation-delay:0.5s">🌹</div>
 
     <!-- main card -->
-    <main class="card">
+    <main class="card" id="mainCard">
       <div class="kitty" aria-label="true hello kitty">
         <!-- True Hello Kitty SVG matching the photo -->
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -417,25 +420,30 @@
 
   <script>
     const button = document.getElementById("loveButton");
+    const card = document.getElementById("mainCard");
     let tries = 0;
 
     function moveButton() {
       tries++;
       if (tries < 6) {
+        // Switch to absolute positioning inside the card
         button.classList.add("moving");
         
-        // Get button dimensions AFTER it becomes fixed positioned
+        // Get the card's inner dimensions (accounting for padding & border)
+        const cardRect = card.getBoundingClientRect();
         const btnWidth = button.offsetWidth;
         const btnHeight = button.offsetHeight;
-        const pad = 15; // safe padding from screen edges
         
-        // Calculate safe boundaries
-        const maxX = window.innerWidth - btnWidth - pad;
-        const maxY = window.innerHeight - btnHeight - pad;
+        // Safe padding so the button never touches the card's edges
+        const pad = 20;
         
-        // Generate random position that keeps the button fully visible
-        const x = Math.max(pad, Math.min(maxX, Math.random() * maxX));
-        const y = Math.max(pad, Math.min(maxY, Math.random() * maxY));
+        // Maximum X and Y positions INSIDE the card
+        const maxX = cardRect.width - btnWidth - pad * 2;
+        const maxY = cardRect.height - btnHeight - pad * 2;
+        
+        // Random position within the card (relative to card's top-left)
+        const x = pad + Math.random() * Math.max(0, maxX);
+        const y = pad + Math.random() * Math.max(0, maxY);
         
         button.style.left = x + "px";
         button.style.top = y + "px";
