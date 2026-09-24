@@ -454,7 +454,7 @@ button:active{
 
     </div>
 
-    <!-- VIDEO SURPRISE (plays locally) -->
+    <!-- VIDEO SURPRISE (auto-plays) -->
 
     <div class="videoSection" id="videoSection" style="display:none;">
 
@@ -468,14 +468,20 @@ button:active{
         </p>
 
         <div class="videoWrapper">
-            <video id="surpriseVideo" controls playsinline preload="metadata">
+            <video id="surpriseVideo"
+                   controls
+                   playsinline
+                   preload="auto"
+                   muted
+                   autoplay
+                   loop>
                 <source src="surprise.mp4" type="video/mp4">
                 Your browser does not support the video tag. 😢
             </video>
         </div>
 
         <button class="videoButton" id="videoButton">
-            🎬 Watch Your Surprise ❤️
+            🔊 Tap For Sound ❤️
         </button>
 
     </div>
@@ -898,12 +904,39 @@ function finishGame(){
 
         videoSection.style.display="block";
 
+        /* =========================
+           AUTO-PLAY THE VIDEO
+           Muted first (browsers require this),
+           then user taps for sound.
+        ========================= */
+
+        if(surpriseVideo){
+
+            surpriseVideo.muted = true;
+
+            const playPromise =
+                surpriseVideo.play();
+
+            if(playPromise !== undefined){
+
+                playPromise
+                    .then(()=>{
+                        videoButton.textContent =
+                            "🔊 Tap For Sound ❤️";
+                    })
+                    .catch(()=>{
+                        videoButton.textContent =
+                            "▶️ Tap To Play ❤️";
+                    });
+            }
+        }
+
     },2500);
 }
 
 
 /* =========================
-   LOCAL VIDEO — PLAY / PAUSE
+   VIDEO — SOUND / PLAY
 ========================= */
 
 videoButton.addEventListener(
@@ -912,39 +945,33 @@ videoButton.addEventListener(
 
         if(!surpriseVideo)return;
 
+        // If paused → play
         if(surpriseVideo.paused){
 
             surpriseVideo.play()
                 .then(()=>{
                     videoButton.textContent =
-                        "⏸️ Pause Surprise ❤️";
+                        surpriseVideo.muted
+                        ? "🔊 Tap For Sound ❤️"
+                        : "🔇 Mute ❤️";
                 })
                 .catch(()=>{
                     alert("💗 Tap the video to play it.");
                 });
 
-        }else{
-
-            surpriseVideo.pause();
-
-            videoButton.textContent =
-                "🎬 Watch Your Surprise ❤️";
+            return;
         }
+
+        // If playing → toggle mute
+        surpriseVideo.muted =
+            !surpriseVideo.muted;
+
+        videoButton.textContent =
+            surpriseVideo.muted
+            ? "🔊 Tap For Sound ❤️"
+            : "🔇 Mute ❤️";
     }
 );
-
-// Keep button text in sync with the actual video state
-surpriseVideo.addEventListener("play", ()=>{
-    videoButton.textContent = "⏸️ Pause Surprise ❤️";
-});
-
-surpriseVideo.addEventListener("pause", ()=>{
-    videoButton.textContent = "🎬 Watch Your Surprise ❤️";
-});
-
-surpriseVideo.addEventListener("ended", ()=>{
-    videoButton.textContent = "🎬 Watch Your Surprise ❤️";
-});
 
 
 /* =========================
