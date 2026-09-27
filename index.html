@@ -3,1100 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff1f6">
 <title>For Aya ❤️</title>
-
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-    background:linear-gradient(135deg,#fff0f5,#ffd6e7,#fff);
-    color:#5a1834;
-}
-
-/* BACKGROUND */
-.bg{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:0;
-}
-
-.rose,
-.heart{
-    position:absolute;
-    animation:float 8s linear infinite;
-    opacity:.7;
-}
-
-.rose{font-size:28px}
-.heart{font-size:20px}
-
-@keyframes float{
-    0%{
-        transform:translateY(110vh) rotate(0deg);
-        opacity:0;
-    }
-    15%{opacity:.8}
-    100%{
-        transform:translateY(-15vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-/* MAIN */
-.game{
-    position:relative;
-    z-index:2;
-    width:min(92%,700px);
-    margin:auto;
-    padding:25px 0 50px;
-    text-align:center;
-}
-
-header{
-    padding:20px;
-}
-
-h1{
-    font-size:clamp(32px,8vw,60px);
-    color:#e91e63;
-    text-shadow:0 3px 10px #ff9fbe;
-}
-
-.subtitle{
-    margin-top:8px;
-    font-size:18px;
-}
-
-/* LEVELS */
-.levels{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:15px 0;
-}
-
-.level-dot{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#ffd1df;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    color:#9b3158;
-    transition:.3s;
-}
-
-.level-dot.active{
-    background:#ff4f91;
-    color:white;
-    transform:scale(1.15);
-    box-shadow:0 0 20px #ff6fa7;
-}
-
-/* CARD */
-.card{
-    background:rgba(255,255,255,.92);
-    border:3px solid #ff9cbd;
-    border-radius:30px;
-    padding:30px 22px;
-    box-shadow:0 15px 45px rgba(190,50,100,.18);
-    backdrop-filter:blur(8px);
-}
-
-.kitty{
-    font-size:75px;
-    margin-bottom:10px;
-}
-
-h2{
-    color:#e91e63;
-    margin-bottom:12px;
-}
-
-.description{
-    line-height:1.6;
-    margin-bottom:22px;
-}
-
-/* BUTTONS */
-button{
-    border:none;
-    background:linear-gradient(135deg,#ff4081,#ff77a8);
-    color:white;
-    padding:14px 25px;
-    border-radius:30px;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    margin:7px;
-    box-shadow:0 7px 18px rgba(233,30,99,.25);
-    transition:.2s;
-}
-
-button:hover{
-    transform:translateY(-3px) scale(1.03);
-}
-
-button:active{
-    transform:scale(.95);
-}
-
-/* GAME AREA */
-.gameArea{
-    min-height:250px;
-    position:relative;
-    margin-top:15px;
-}
-
-.score{
-    font-size:20px;
-    font-weight:bold;
-    margin:10px;
-}
-
-/* LEVEL 1 */
-.roseTarget{
-    font-size:55px;
-    cursor:pointer;
-    position:absolute;
-    user-select:none;
-    transition:.15s;
-}
-
-/* LEVEL 2 */
-.question{
-    font-size:22px;
-    margin:20px 0;
-}
-
-.answer{
-    background:#fff0f6;
-    color:#9d3158;
-    border:2px solid #ffb1ca;
-}
-
-/* LEVEL 3 */
-.bigHeart{
-    font-size:110px;
-    cursor:pointer;
-    display:inline-block;
-    animation:heartbeat 1s infinite;
-    user-select:none;
-}
-
-@keyframes heartbeat{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.15)}
-}
-
-/* POEM */
-.poem{
-    margin-top:25px;
-    padding:20px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#fff0f6,#ffe0eb);
-    border:2px solid #ff9fbd;
-    display:none;
-}
-
-.poem.show{
-    display:block;
-    animation:appear .8s ease;
-}
-
-.poem h3{
-    color:#d81b60;
-    margin-bottom:15px;
-}
-
-.poemText{
-    direction:rtl;
-    font-size:21px;
-    line-height:2;
-    font-family:Georgia,serif;
-}
-
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(20px) scale(.95);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-/* FINAL */
-.final{
-    display:none;
-}
-
-.final.show{
-    display:block;
-    animation:appear 1s ease;
-}
-
-.finalTitle{
-    font-size:42px;
-    color:#e91e63;
-}
-
-.loveMessage{
-    font-size:20px;
-    line-height:1.8;
-    margin:20px 0;
-}
-
-/* VIDEO SECTION */
-.videoSection{
-    margin-top:25px;
-    padding:22px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#fff1f7,#ffe0ec);
-    border:2px solid #ff9cbd;
-    animation:appear 1s ease;
-}
-
-.videoSection h3{
-    color:#e91e63;
-    font-size:24px;
-    margin-bottom:10px;
-}
-
-.videoSection p{
-    margin-bottom:15px;
-    line-height:1.6;
-}
-
-/* Local video wrapper (vertical reel style) */
-.videoWrapper{
-    position:relative;
-    width:100%;
-    max-width:320px;
-    aspect-ratio:9 / 16;
-    margin:0 auto 15px;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(190,50,100,.25);
-    background:#000;
-}
-
-.videoWrapper video{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:20px;
-    background:#111;
-}
-
-.videoButton{
-    font-size:18px;
-    padding:16px 28px;
-}
-
-/* CONFETTI */
-.confetti{
-    position:fixed;
-    top:-20px;
-    z-index:20;
-    pointer-events:none;
-    animation:confettiFall 3s linear forwards;
-}
-
-@keyframes confettiFall{
-    to{
-        transform:translateY(110vh) rotate(720deg);
-        opacity:0;
-    }
-}
-
-@media(max-width:500px){
-
-    .card{
-        padding:24px 15px;
-    }
-
-    .kitty{
-        font-size:60px;
-    }
-
-    .poemText{
-        font-size:18px;
-    }
-
-    .finalTitle{
-        font-size:34px;
-    }
-
-    .videoWrapper{
-        max-width:280px;
-    }
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--rose:#e94f83;--rose-dark:#a52d5a;--pink:#fff0f5;--ink:#542039;--muted:#9c6b80;--line:#f5c7d7;--glass:rgba(255,255,255,.83)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',Arial,sans-serif;min-height:100vh;color:var(--ink);background:radial-gradient(ellipse at 15% 10%,#ffe0eb 0,transparent 38%),radial-gradient(ellipse at 90% 80%,#ffd6e5 0,transparent 35%),linear-gradient(135deg,#fff8fb,#ffedf4 55%,#fff9fb);overflow-x:hidden}
+button{font:inherit;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,filter .2s}
+button:hover{transform:translateY(-2px);filter:saturate(1.1)}button:active{transform:scale(.97)}
+button:focus-visible{outline:3px solid #b82d63;outline-offset:3px}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.floaty{position:absolute;bottom:-60px;animation:floatUp linear infinite;opacity:.5}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.shell{position:relative;z-index:1;width:min(100% - 28px,760px);margin:auto;padding:28px 0 55px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.brand{font-weight:800;letter-spacing:.02em;color:var(--rose-dark);font-size:14px}
+.today-pill{border:1px solid var(--line);background:#ffffffb8;border-radius:99px;padding:9px 13px;font-size:12px;font-weight:700;color:var(--rose-dark)}
+.hero{text-align:center;padding:26px 12px 24px}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:800;color:var(--rose);margin-bottom:12px}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,9vw,66px);line-height:1.08;color:#c33c70;text-shadow:0 8px 30px #f4a6c5a0}
+.subtitle{max-width:480px;margin:14px auto 0;color:#87536b;font-size:15px;line-height:1.7}
+.progress-card,.card{background:var(--glass);border:1px solid #fff;box-shadow:0 18px 55px #a63c6412,0 2px 12px #a63c6409;backdrop-filter:blur(16px);border-radius:28px}
+.progress-card{padding:20px 22px;margin-bottom:18px}
+.progress-head{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;font-weight:700;margin-bottom:12px}
+.progress-head span:last-child{color:var(--rose-dark)}
+.track{height:10px;background:#f9dce7;border-radius:20px;overflow:hidden}
+.track-fill{height:100%;width:0;background:linear-gradient(90deg,#f6a0bf,#d83e78);border-radius:20px;transition:width .5s ease}
+.days{display:flex;gap:8px;margin-top:17px}
+.day{flex:1;text-align:center;padding:10px 4px;border-radius:15px;background:#fff4f8;border:1px solid #f9dbe6;color:#a76a83;font-size:11px;font-weight:700}
+.day b{display:block;font-size:18px;color:#cc5782;margin-bottom:3px}
+.day.done{background:#ffe0ec;border-color:#f4a8c4;color:#8f3156}
+.day.active{background:linear-gradient(135deg,#e94f83,#c83a70);color:white;box-shadow:0 7px 18px #e94f8340}
+.day.active b{color:white}
+.card{padding:clamp(22px,5vw,38px);text-align:center}
+.level-meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:99px;background:#fff0f6;border:1px solid #f9d5e3;color:#a43b65;font-size:12px;font-weight:800}
+.emoji{font-size:54px;margin:6px 0 12px;filter:drop-shadow(0 8px 12px #ed9bbd50)}
+h2{font-family:'Playfair Display',Georgia,serif;color:#b93468;font-size:clamp(24px,5vw,34px);line-height:1.2;margin-bottom:12px}
+.desc{max-width:510px;margin:0 auto 20px;color:#87536b;line-height:1.7;font-size:15px}
+.score{font-weight:800;color:#c13d70;margin:12px 0;font-size:14px}
+.game-area{min-height:205px;position:relative;border:1px dashed #f2b6cc;background:linear-gradient(145deg,#fff8fb,#fff0f6);border-radius:22px;margin:18px 0;padding:18px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;overflow:hidden}
+.primary{background:linear-gradient(135deg,#f16a99,#d83f79);color:white;padding:14px 25px;border-radius:99px;font-weight:800;box-shadow:0 9px 22px #e94f8333}
+.secondary{background:#fff;color:#a43b65;border:1px solid #f3bfd2;padding:12px 19px;border-radius:99px;font-weight:700}
+.answer{background:#fff;color:#8f3659;border:1px solid #f4c4d6;border-radius:16px;padding:13px 17px;font-weight:700;min-width:42%;box-shadow:0 5px 12px #a63c640b}
+.answer:hover{background:#ffe4ee}
+.target{font-size:45px;position:absolute;user-select:none;cursor:pointer;animation:bob 1.3s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-8px) rotate(8deg)}}
+.heart-tap{font-size:95px;cursor:pointer;user-select:none;animation:pulse 1s infinite;filter:drop-shadow(0 10px 20px #ed7fa750)}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.poem{display:none;margin-top:20px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#fff0f6,#ffe1ec);border:1px solid #f4b6cc;animation:appear .7s ease}
+.poem.show{display:block}.poem h3{color:#c13d70;margin-bottom:12px}.poemText{direction:rtl;font-family:Georgia,serif;font-size:20px;line-height:2}
+.daily-ending{display:none;margin-top:18px;padding:24px 18px;background:linear-gradient(135deg,#fff0f6,#ffe1ec);border:1px solid #f3b3ca;border-radius:22px;animation:appear .7s ease}
+.daily-ending.show{display:block}.daily-ending h3{font-family:'Playfair Display',Georgia,serif;color:#bd356a;font-size:27px;margin-bottom:10px}
+.end-text{line-height:1.8;color:#81465f}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.note{font-size:12px;color:#b17b91;margin-top:18px;line-height:1.6}
+.final{display:none;text-align:center}.final.show{display:block}
+.videoSection{margin-top:22px;padding:20px;border-radius:22px;background:#fff0f6;border:1px solid #f3b3ca}
+.videoWrapper{width:min(100%,300px);aspect-ratio:9/16;margin:15px auto;border-radius:18px;overflow:hidden;background:#160811;box-shadow:0 12px 30px #a63c6430}
+video{width:100%;height:100%;object-fit:cover}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;background:#64233f;color:white;padding:12px 18px;border-radius:99px;box-shadow:0 8px 30px #64233f33;font-size:13px;font-weight:700;display:none;max-width:90%;text-align:center}
+.toast.show{display:block;animation:appear .25s ease}
+.confetti{position:fixed;top:-20px;z-index:9;pointer-events:none;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+@keyframes appear{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:520px){.shell{width:min(100% - 20px,760px);padding-top:15px}.topbar{align-items:flex-start}.progress-card{padding:17px}.days{gap:5px}.day{font-size:10px}.day b{font-size:16px}.game-area{min-height:220px;padding:12px}.answer{min-width:100%}.poemText{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
 <div class="bg" id="background"></div>
-
-<div class="game">
-
-<header>
-    <h1>For Aya ❤️</h1>
-
-    <div class="subtitle">
-        A tiny game made with a huge amount of love 🌹
+<main class="shell">
+  <div class="topbar"><div class="brand">♡ A LITTLE WORLD FOR AYA</div><div class="today-pill" id="datePill">🌷 YOUR DAILY LOVE QUEST</div></div>
+  <header class="hero">
+    <div class="eyebrow">made with all my heart</div>
+    <h1>For Aya <span>♥</span></h1>
+    <p class="subtitle">100 little levels, a hundred reasons to smile, and a love that never runs out. Your next little adventure is waiting, my love.</p>
+  </header>
+  <section class="progress-card">
+    <div class="progress-head"><span>Our love adventure</span><span id="overallText">0 / 100 levels</span></div>
+    <div class="track"><div class="track-fill" id="overallFill"></div></div>
+    <div class="days" id="dailySlots">
+      <div class="day" id="slot0"><b>♡</b>Quest 1</div><div class="day" id="slot1"><b>♡</b>Quest 2</div><div class="day" id="slot2"><b>♡</b>Quest 3</div>
     </div>
-</header>
-
-<div class="levels">
-    <div class="level-dot active" id="dot1">1</div>
-    <div class="level-dot" id="dot2">2</div>
-    <div class="level-dot" id="dot3">3</div>
-</div>
-
-<div class="card" id="gameCard">
-
-    <div class="kitty">🎀</div>
-
-    <h2 id="title">
-        Level 1 — Catch My Roses 🌹
-    </h2>
-
-    <p class="description" id="description">
-        Ayaaa! 🌹 Some roses escaped because they know
-        how much I love you! Catch 7 roses to continue.
-    </p>
-
-    <div class="score" id="score">
-        Roses caught: 0 / 7
-    </div>
-
-    <div class="gameArea" id="gameArea"></div>
-
-    <button id="startBtn">
-        Start Game 🌹
-    </button>
-
-    <div class="poem" id="poem1">
-
-        <h3>🌹 قصيدة المستوى الأول 🌹</h3>
-
-        <div class="poemText">
-            أحبكِ حبّاً لو توزّعَ نورهُ<br>
-            على الناسِ صارَ الكونُ كلُّهُ منوّرا<br>
-            وأنتِ لقلبي أجملُ حلمٍ<br>
-            وأنتِ الهوى إن كان للحبِّ موطنا ❤️
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- FINAL SCREEN -->
-
-<div class="card final" id="finalScreen">
-
-    <div class="kitty">
-        🎀🌹🎀
-    </div>
-
-    <div class="finalTitle">
-        You Won! ❤️
-    </div>
-
-    <div class="loveMessage">
-
-        Aya... you completed my little game. 🥹❤️
-
-        <br><br>
-
-        But there is something funny...
-
-        <br><br>
-
-        The game had 3 levels...
-
-        <br><br>
-
-        <strong>
-            but my love for you has NO final level. ❤️
-        </strong>
-
-    </div>
-
-    <div class="poem show">
-
-        <h3>💗 إلى آية 💗</h3>
-
-        <div class="poemText">
-
-            يا آيةَ القلبِ يا نبضاً أعيشُ بهِ<br>
-            ويا أجملَ ما قد صادفَتْهُ حياتي<br>
-            إن كان للحبِّ عنوانٌ أريدُهُ<br>
-            فاسمُكِ عندي أجملُ الكلماتِ ❤️
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO SURPRISE (auto-plays) -->
-
-    <div class="videoSection" id="videoSection" style="display:none;">
-
-        <h3>
-            🎀 One Last Surprise 🎀
-        </h3>
-
-        <p>
-            You finished all 3 levels...<br>
-            Now I have one last little surprise for you. ❤️
-        </p>
-
-        <div class="videoWrapper">
-            <video id="surpriseVideo"
-                   controls
-                   playsinline
-                   preload="auto"
-                   muted
-                   autoplay
-                   loop>
-                <source src="surprise.mp4" type="video/mp4">
-                Your browser does not support the video tag. 😢
-            </video>
-        </div>
-
-        <button class="videoButton" id="videoButton">
-            🔊 Tap For Sound ❤️
-        </button>
-
-    </div>
-
-    <button onclick="restartGame()">
-        Play Again 🌹
-    </button>
-
-</div>
-
-</div>
-
-
+  </section>
+  <section class="card" id="gameCard">
+    <div class="level-meta"><span class="chip" id="levelChip">🌹 LEVEL 1 / 100</span><span class="chip" id="streakChip">✨ 3 quests per day</span></div>
+    <div class="emoji" id="mainEmoji">🎀</div>
+    <h2 id="title">Catch my roses</h2>
+    <p class="desc" id="description">Ayaaa, some roses escaped because they know how much I love you. Catch 5 roses to start today's love story!</p>
+    <div class="score" id="score">Roses caught: 0 / 5</div>
+    <div class="game-area" id="gameArea"></div>
+    <button class="primary" id="startBtn">Start today's quest 🌹</button>
+    <div class="poem" id="poem"><h3>🌹 A little poem for you 🌹</h3><div class="poemText" id="levelPoemText"></div></div>
+    <div class="daily-ending" id="dailyEnding"><h3 id="endingTitle">Your little daily surprise 💗</h3><p class="end-text" id="endingText"></p><p class="poemText" style="margin-top:12px">يا آيةَ القلبِ يا نبضاً أعيشُ بهِ<br>ويا أجملَ ما قد صادفَتْهُ حياتي<br>إن كان للحبِّ عنوانٌ أريدُهُ<br>فاسمُكِ عندي أجملُ الكلماتِ ❤️</p></div>
+    <div class="actions" id="actions"></div>
+    <p class="note" id="note">A new set of 3 little quests unlocks every day. Your progress stays saved on this device. ❤️</p>
+  </section>
+  <section class="card final" id="finalScreen" style="margin-top:18px">
+    <div class="emoji">🎀🌹🎀</div><h2>100 little levels. One endless love.</h2>
+    <p class="desc">Aya, you finished every little adventure I made for you. But my love for you has no final level. ❤️</p>
+    <div class="poem show"><h3>💗 إلى آية 💗</h3><div class="poemText">يا آيةَ القلبِ يا نبضاً أعيشُ بهِ<br>ويا أجملَ ما قد صادفَتْهُ حياتي<br>إن كان للحبِّ عنوانٌ أريدُهُ<br>فاسمُكِ عندي أجملُ الكلماتِ ❤️</div></div>
+    <div class="videoSection"><h3>🎀 One Last Surprise 🎀</h3><p class="desc">You finished all 100 levels... now I have one last surprise for you. ❤️</p><div class="videoWrapper"><video id="surpriseVideo" controls playsinline preload="metadata" muted loop><source src="surprise.mp4" type="video/mp4">Your browser does not support video.</video></div><button class="primary" id="videoButton">🔊 Tap for sound ❤️</button></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
 <script>
+const TOTAL=100, DAILY=3;
+const endings=[
+"Every rose in this little game is a tiny reminder that I choose you, today and every day. 🌹",
+"If I could pause one moment forever, it would be a moment with you. ❤️",
+"You make ordinary days feel like the sweetest memories. I love you, Aya. ✨",
+"Today’s little quest is over, but my heart is still choosing you, over and over. 💗",
+"You're my favorite notification, my safest place, and my happiest thought. 🎀",
+"No matter how many levels we finish, there will always be another reason to love you. 🌷",
+"Three little quests today, a million thoughts of you every day. I adore you. 💞",
+"Somehow the world got softer and brighter when you came into my life. ❤️",
+"I hope this tiny surprise makes you smile as much as you make me smile. 🌹",
+"Level complete: you still have my whole heart. No unlock code needed. 🔐❤️"
+];
+const lovePoems=["يا آيةَ القلبِ يا أجملَ أقداري\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا آيةَ القلبِ يا أجملَ أقداري\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا آيةَ القلبِ يا أجملَ أقداري\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا آيةَ القلبِ يا أجملَ أقداري\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا آيةَ القلبِ يا أجملَ أقداري\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا آيةَ القلبِ يا أجملَ أقداري\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا آيةَ القلبِ يا أجملَ أقداري\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا آيةَ القلبِ يا أجملَ أقداري\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا آيةَ القلبِ يا أجملَ أقداري\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا آيةَ القلبِ يا أجملَ أقداري\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا من جعلتِ للحياةِ معنىً جميلاً\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا من جعلتِ للحياةِ معنىً جميلاً\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا من جعلتِ للحياةِ معنىً جميلاً\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا من جعلتِ للحياةِ معنىً جميلاً\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا من جعلتِ للحياةِ معنىً جميلاً\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "في عينيكِ أرى حكايةً لا تنتهي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "في عينيكِ أرى حكايةً لا تنتهي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "في عينيكِ أرى حكايةً لا تنتهي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "في عينيكِ أرى حكايةً لا تنتهي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "في عينيكِ أرى حكايةً لا تنتهي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "في عينيكِ أرى حكايةً لا تنتهي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "في عينيكِ أرى حكايةً لا تنتهي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "في عينيكِ أرى حكايةً لا تنتهي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "في عينيكِ أرى حكايةً لا تنتهي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "في عينيكِ أرى حكايةً لا تنتهي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "كلما مرَّ يومٌ أحبكِ أكثر\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "كلما مرَّ يومٌ أحبكِ أكثر\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "كلما مرَّ يومٌ أحبكِ أكثر\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "كلما مرَّ يومٌ أحبكِ أكثر\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "كلما مرَّ يومٌ أحبكِ أكثر\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "كلما مرَّ يومٌ أحبكِ أكثر\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "كلما مرَّ يومٌ أحبكِ أكثر\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "كلما مرَّ يومٌ أحبكِ أكثر\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "كلما مرَّ يومٌ أحبكِ أكثر\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "كلما مرَّ يومٌ أحبكِ أكثر\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا آيةَ الروحِ يا دفءَ المساءِ\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا آيةَ الروحِ يا دفءَ المساءِ\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا آيةَ الروحِ يا دفءَ المساءِ\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا آيةَ الروحِ يا دفءَ المساءِ\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا آيةَ الروحِ يا دفءَ المساءِ\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹"];
 
-/* =========================
-   BACKGROUND
-========================= */
-
-const bg=document.getElementById("background");
-
-function createBackground(){
-
-    for(let i=0;i<25;i++){
-
-        const item=document.createElement("div");
-
-        item.className=
-            Math.random()>.5 ? "rose" : "heart";
-
-        item.textContent=
-            item.className==="rose"
-            ? "🌹"
-            : "❤️";
-
-        item.style.left=
-            Math.random()*100+"%";
-
-        item.style.animationDuration=
-            (5+Math.random()*7)+"s";
-
-        item.style.animationDelay=
-            (-Math.random()*8)+"s";
-
-        bg.appendChild(item);
-    }
+const titles=["Catch my roses","A question from my heart","Catch my heart","Find the hidden love","Pick a little promise","The heart says…","A tiny memory","Choose your flower","Love is in the details","One more heartbeat"];
+const descriptions=["Catch the roses before they float away!","A little question, with one answer my heart already knows.","Tap my heart ten times to unlock a sweet message.","Find the hidden heart among the flowers.","Choose the promise you want me to keep.","Follow your heart and choose the right answer.","A tiny memory game, made just for you.","Pick the flower that reminds me of you.","A little detail about my favorite person.","Tap the heart and collect a little love."];
+const questions=[
+{q:"What does Atef want the most? 👀",a:["🍕 Pizza","🎮 Video games","💗 Aya","💰 Money"],correct:2},
+{q:"Where does my favorite place begin?",a:["At the beach","Wherever you are ❤️","At the mall","In a game"],correct:1},
+{q:"What do I want more of with you?",a:["More memories","More adventures","More hugs","All of these 💗"],correct:3},
+{q:"What is my favorite notification?",a:["A game invite","Your name on my screen ❤️","A sale","The weather"],correct:1},
+{q:"What will never change?",a:["My favorite food","My love for you ❤️","My phone","My playlist"],correct:1}
+];
+const $=id=>document.getElementById(id);
+const key='ayaLoveQuest_v2';
+let state=loadState(), runCount=0, roseTimer=null, currentLevel=1, heartClicks=0, toastTimer;
+function loadState(){try{let s=JSON.parse(localStorage.getItem(key));if(s&&Array.isArray(s.completed))return s}catch(e){}return {completed:[],dayKey:todayKey(),today:[]}}
+function todayKey(){let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function refreshDay(){const k=todayKey();if(state.dayKey!==k){state.dayKey=k;state.today=[];save()} }
+function save(){localStorage.setItem(key,JSON.stringify(state))}
+function nextLevel(){for(let i=1;i<=TOTAL;i++)if(!state.completed.includes(i))return i;return 101}
+function todaysLevel(){refreshDay();return state.today.length<DAILY?nextLevel():null}
+function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3000)}
+function updateProgress(){
+ const done=state.completed.length;$('overallText').textContent=`${done} / ${TOTAL} levels`;$('overallFill').style.width=(done/TOTAL*100)+'%';
+ for(let i=0;i<3;i++){let el=$('slot'+i);el.className='day '+(i<state.today.length?'done':i===state.today.length?'active':'');el.innerHTML=`<b>${i<state.today.length?'✓':i+1}</b>${i<state.today.length?'Complete':'Quest '+(i+1)}`}
 }
-
-createBackground();
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let level=1;
-let rosesCaught=0;
-let gameRunning=false;
-
-const gameArea=
-    document.getElementById("gameArea");
-
-const title=
-    document.getElementById("title");
-
-const description=
-    document.getElementById("description");
-
-const score=
-    document.getElementById("score");
-
-const startBtn=
-    document.getElementById("startBtn");
-
-const dot1=
-    document.getElementById("dot1");
-
-const dot2=
-    document.getElementById("dot2");
-
-const dot3=
-    document.getElementById("dot3");
-
-const poem1=
-    document.getElementById("poem1");
-
-const gameCard=
-    document.getElementById("gameCard");
-
-const finalScreen=
-    document.getElementById("finalScreen");
-
-const videoSection=
-    document.getElementById("videoSection");
-
-const videoButton=
-    document.getElementById("videoButton");
-
-const surpriseVideo=
-    document.getElementById("surpriseVideo");
-
-
-/* =========================
-   LEVEL 1
-========================= */
-
-startBtn.addEventListener(
-    "click",
-    startLevel1
-);
-
-function startLevel1(){
-
-    startBtn.style.display="none";
-
-    gameRunning=true;
-
-    rosesCaught=0;
-
-    score.textContent=
-        "Roses caught: 0 / 7";
-
-    spawnRose();
+function init(){
+ refreshDay();updateProgress();
+ const d=new Date();$('datePill').textContent=d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
+ const n=todaysLevel();
+ if(nextLevel()>TOTAL){$('gameCard').style.display='none';$('finalScreen').classList.add('show');return}
+ if(n===null){lockForToday();return}
+ loadLevel(n);
 }
-
-function spawnRose(){
-
-    if(!gameRunning)return;
-
-    const rose=
-        document.createElement("div");
-
-    rose.className="roseTarget";
-
-    rose.textContent="🌹";
-
-    const maxX=
-        Math.max(
-            20,
-            gameArea.clientWidth-70
-        );
-
-    const maxY=
-        Math.max(
-            20,
-            gameArea.clientHeight-70
-        );
-
-    rose.style.left=
-        Math.random()*maxX+"px";
-
-    rose.style.top=
-        Math.random()*maxY+"px";
-
-    rose.addEventListener(
-        "click",
-        catchRose
-    );
-
-    gameArea.appendChild(rose);
-
-    setTimeout(()=>{
-
-        if(rose.parentNode){
-
-            rose.remove();
-
-            if(gameRunning){
-                spawnRose();
-            }
-        }
-
-    },1300);
+function lockForToday(){
+ $('levelChip').textContent='💗 TODAY’S QUESTS COMPLETE';$('mainEmoji').textContent='🌙';$('title').textContent='That’s all for today, my love';$('description').textContent='You finished your 3 little quests for today. Come back tomorrow for 3 new levels and a brand-new daily ending. I love you, Aya. ❤️';$('score').textContent='3 / 3 quests completed today';$('gameArea').innerHTML='<div style="font-size:58px">💐</div>';$('startBtn').style.display='none';$('poem').classList.remove('show');$('dailyEnding').classList.add('show');$('endingTitle').textContent='See you tomorrow, Aya 🌙';$('endingText').textContent='The day may be over, but loving you is my favorite thing to do. Sleep with a smile, my love. ❤️';$('actions').innerHTML='';$('note').textContent='Your next 3 levels unlock automatically tomorrow on this device.';updateProgress();
 }
-
-
-function catchRose(e){
-
-    e.stopPropagation();
-
-    const rose=e.currentTarget;
-
-    const rect=
-        rose.getBoundingClientRect();
-
-    rose.remove();
-
-    rosesCaught++;
-
-    score.textContent=
-        "Roses caught: "
-        +rosesCaught+
-        " / 7";
-
-    createHeartExplosion(
-        rect.left,
-        rect.top
-    );
-
-    if(rosesCaught>=7){
-
-        gameRunning=false;
-
-        gameArea.innerHTML="";
-
-        poem1.classList.add("show");
-
-        setTimeout(
-            showLevel2,
-            3500
-        );
-
-    }else{
-
-        spawnRose();
-
-    }
+function loadLevel(n){
+ currentLevel=n;$('levelChip').textContent=`🌹 LEVEL ${n} / ${TOTAL}`;$('streakChip').textContent=`✨ Quest ${state.today.length+1} of 3 today`;
+ const type=(n-1)%10;$('mainEmoji').textContent=['🌹','💌','❤️','🌸','🎀','💞','📸','🌷','✨','💓'][type];
+ $('title').textContent=`Level ${n} — ${titles[type]}`;$('description').textContent=descriptions[type];$('score').textContent='';$('gameArea').innerHTML='';$('startBtn').style.display='inline-block';$('startBtn').textContent='Start this quest 💗';$('poem').classList.remove('show');$('levelPoemText').innerHTML=lovePoems[n-1].replace(/\\n/g,'<br>');$('dailyEnding').classList.remove('show');$('actions').innerHTML='';$('note').textContent='A new set of 3 little quests unlocks every day. Your progress stays saved on this device. ❤️';
+ $('startBtn').onclick=()=>startLevel(type);
+ updateProgress();
 }
-
-
-/* =========================
-   LEVEL 2
-========================= */
-
-function showLevel2(){
-
-    level=2;
-
-    dot1.classList.remove("active");
-
-    dot2.classList.add("active");
-
-    title.textContent=
-        "Level 2 — How Well Do You Know My Heart? 💗";
-
-    description.textContent=
-        "Okay Aya... now let's see if you know what my heart wants. 😌❤️";
-
-    score.textContent="";
-
-    poem1.classList.remove("show");
-
-    gameArea.innerHTML="";
-
-    const question=
-        document.createElement("div");
-
-    question.className="question";
-
-    question.textContent=
-        "What does Atef want the most? 👀";
-
-    gameArea.appendChild(question);
-
-    const answers=[
-        "🍕 Pizza",
-        "🎮 Video games",
-        "💗 Aya",
-        "💰 Money"
-    ];
-
-    answers.forEach(answer=>{
-
-        const button=
-            document.createElement("button");
-
-        button.className="answer";
-
-        button.textContent=answer;
-
-        button.addEventListener(
-            "click",
-            ()=>{
-
-                if(answer==="💗 Aya"){
-
-                    button.textContent=
-                        "CORRECT! 😭❤️";
-
-                    setTimeout(
-                        showPoem2,
-                        1000
-                    );
-
-                }else{
-
-                    button.textContent=
-                        "Wrong 😂 Try again!";
-
-                }
-
-            }
-        );
-
-        gameArea.appendChild(button);
-
-    });
+function startLevel(type){
+ $('startBtn').style.display='none';$('gameArea').innerHTML='';$('score').textContent='';
+ if(type===0)playRoses();else if(type===1||type===4||type===7||type===8)playQuestion(type);else if(type===2||type===5||type===9)playHeart();else if(type===3)playFindHeart();else playMemory();
 }
-
-
-function showPoem2(){
-
-    gameArea.innerHTML=`
-
-        <div class="poem show">
-
-            <h3>
-                💗 قصيدة المستوى الثاني 💗
-            </h3>
-
-            <div class="poemText">
-
-                إذا كانَ قلبي موطناً للحبِّ<br>
-                فأنتِ فيهِ الوطنُ والأحلامُ<br>
-                وإن سألتِ القلبَ من يهواهُ؟<br>
-                سيقولُ: آيةُ... ولا كلامُ ❤️
-
-            </div>
-
-        </div>
-
-        <button id="nextLevelBtn">
-            Continue 🎀
-        </button>
-    `;
-
-    document
-        .getElementById("nextLevelBtn")
-        .addEventListener(
-            "click",
-            showLevel3
-        );
+function playRoses(){
+ let caught=0;const area=$('gameArea');area.style.display='block';area.innerHTML='';
+ $('score').textContent='Roses caught: 0 / 5';
+ area.style.position='relative';
+ function spawn(){
+   if(caught>=5)return;
+   area.querySelectorAll('.target').forEach(x=>x.remove());
+   const r=document.createElement('button');
+   r.className='target';r.textContent='🌹';
+   r.setAttribute('aria-label','Catch the rose');
+   r.style.position='absolute';r.style.left='4%';r.style.top='38%';
+   r.style.transition='left 5.5s linear, top 5.5s ease-in-out';
+   r.style.fontSize='43px';r.style.background='transparent';r.style.border='0';
+   r.onclick=()=>{
+     caught++;$('score').textContent=`Roses caught: ${caught} / 5`;
+     r.remove();clearTimeout(roseTimer);
+     if(caught>=5){completeLevel()}else{spawn()}
+   };
+   area.appendChild(r);
+   // Let the rose drift slowly from one side to the other, then gently back.
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+     if(!r.isConnected)return;
+     r.style.left='78%';r.style.top=(12+Math.random()*58)+'%';
+   }));
+   roseTimer=setTimeout(()=>{
+     if(!r.isConnected||caught>=5)return;
+     r.style.transition='left 5.5s linear, top 5.5s ease-in-out';
+     r.style.left='4%';r.style.top=(12+Math.random()*58)+'%';
+     roseTimer=setTimeout(spawn,5600);
+   },5600);
+ }
+ spawn();
 }
-
-
-/* =========================
-   LEVEL 3
-========================= */
-
-function showLevel3(){
-
-    level=3;
-
-    dot2.classList.remove("active");
-
-    dot3.classList.add("active");
-
-    title.textContent=
-        "Level 3 — Catch My Heart ❤️";
-
-    description.textContent=
-        "The final level... but be careful. My heart only belongs to one person. 🎀";
-
-    gameArea.innerHTML="";
-
-    const heart=
-        document.createElement("div");
-
-    heart.className="bigHeart";
-
-    heart.textContent="❤️";
-
-    gameArea.appendChild(heart);
-
-    const text=
-        document.createElement("p");
-
-    text.style.marginTop="20px";
-
-    text.textContent=
-        "Tap my heart 10 times to unlock your final message.";
-
-    gameArea.appendChild(text);
-
-    let clicks=0;
-
-    heart.addEventListener(
-        "click",
-        ()=>{
-
-            clicks++;
-
-            text.textContent=
-                "Heart captured: "
-                +clicks+
-                " / 10 ❤️";
-
-            createHeartExplosion(
-                heart.getBoundingClientRect().left+40,
-                heart.getBoundingClientRect().top
-            );
-
-            if(clicks>=10){
-
-                setTimeout(
-                    finishGame,
-                    800
-                );
-
-            }
-
-        }
-    );
+function playQuestion(type){
+ const q=questions[(currentLevel+type)%questions.length];$('gameArea').innerHTML=`<div style="width:100%"><h3 style="margin-bottom:15px;color:#a43b65">${q.q}</h3><div id="answers" style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center"></div></div>`;
+ q.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>{if(i===q.correct){$('score').textContent='That’s right, my love! 💗';completeLevel()}else{b.textContent='Try again, sweetheart 😘';b.style.background='#ffe4ee'}};$('answers').appendChild(b)});
 }
-
-
-/* =========================
-   FINISH GAME
-========================= */
-
-function finishGame(){
-
-    gameCard.style.display="none";
-
-    finalScreen.classList.add("show");
-
-    createConfetti();
-
-    setTimeout(()=>{
-
-        videoSection.style.display="block";
-
-        /* =========================
-           AUTO-PLAY THE VIDEO
-           Muted first (browsers require this),
-           then user taps for sound.
-        ========================= */
-
-        if(surpriseVideo){
-
-            surpriseVideo.muted = true;
-
-            const playPromise =
-                surpriseVideo.play();
-
-            if(playPromise !== undefined){
-
-                playPromise
-                    .then(()=>{
-                        videoButton.textContent =
-                            "🔊 Tap For Sound ❤️";
-                    })
-                    .catch(()=>{
-                        videoButton.textContent =
-                            "▶️ Tap To Play ❤️";
-                    });
-            }
-        }
-
-    },2500);
+function playHeart(){
+ heartClicks=0;$('gameArea').innerHTML='<div style="text-align:center"><div class="heart-tap" id="heartTap">❤️</div><p style="margin-top:10px;color:#98516e;font-weight:700">Tap my heart 10 times!</p></div>';$('score').textContent='Heart taps: 0 / 10';
+ $('heartTap').onclick=()=>{heartClicks++;$('score').textContent=`Heart taps: ${heartClicks} / 10`;if(heartClicks>=10)completeLevel()};
 }
-
-
-/* =========================
-   VIDEO — SOUND / PLAY
-========================= */
-
-videoButton.addEventListener(
-    "click",
-    ()=>{
-
-        if(!surpriseVideo)return;
-
-        // If paused → play
-        if(surpriseVideo.paused){
-
-            surpriseVideo.play()
-                .then(()=>{
-                    videoButton.textContent =
-                        surpriseVideo.muted
-                        ? "🔊 Tap For Sound ❤️"
-                        : "🔇 Mute ❤️";
-                })
-                .catch(()=>{
-                    alert("💗 Tap the video to play it.");
-                });
-
-            return;
-        }
-
-        // If playing → toggle mute
-        surpriseVideo.muted =
-            !surpriseVideo.muted;
-
-        videoButton.textContent =
-            surpriseVideo.muted
-            ? "🔊 Tap For Sound ❤️"
-            : "🔇 Mute ❤️";
-    }
-);
-
-
-/* =========================
-   HEART EXPLOSION
-========================= */
-
-function createHeartExplosion(x,y){
-
-    for(let i=0;i<6;i++){
-
-        const h=
-            document.createElement("div");
-
-        h.textContent=
-            Math.random()>.5
-            ? "❤️"
-            : "🌹";
-
-        h.style.position="fixed";
-
-        h.style.left=x+"px";
-
-        h.style.top=y+"px";
-
-        h.style.fontSize="20px";
-
-        h.style.zIndex="50";
-
-        h.style.pointerEvents="none";
-
-        document.body.appendChild(h);
-
-        const angle=
-            Math.random()*Math.PI*2;
-
-        const distance=
-            50+Math.random()*80;
-
-        h.animate(
-            [
-                {
-                    transform:"translate(0,0)",
-                    opacity:1
-                },
-                {
-                    transform:
-                    `translate(
-                        ${Math.cos(angle)*distance}px,
-                        ${Math.sin(angle)*distance}px
-                    )`,
-                    opacity:0
-                }
-            ],
-            {
-                duration:800,
-                easing:"ease-out"
-            }
-        ).onfinish=()=>{
-            h.remove();
-        };
-    }
+function playFindHeart(){
+ let opts=['🌹','🌸','💗','🌷','🎀','💖'];let correct=Math.floor(Math.random()*opts.length);
+ $('gameArea').innerHTML='<div style="width:100%"><h3 style="color:#a43b65;margin-bottom:18px">Find the one that holds my heart 💕</h3><div id="flowers" style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap"></div></div>';
+ opts.forEach((x,i)=>{let b=document.createElement('button');b.className='answer';b.style.minWidth='60px';b.style.fontSize='28px';b.textContent=x;b.onclick=()=>{if(i===correct)completeLevel();else{b.textContent='🌹';b.disabled=true}};$('flowers').appendChild(b)});
 }
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-function createConfetti(){
-
-    const symbols=[
-        "❤️",
-        "🌹",
-        "🎀",
-        "💕",
-        "✨"
-    ];
-
-    for(let i=0;i<80;i++){
-
-        const c=
-            document.createElement("div");
-
-        c.className="confetti";
-
-        c.textContent=
-            symbols[
-                Math.floor(
-                    Math.random()*
-                    symbols.length
-                )
-            ];
-
-        c.style.left=
-            Math.random()*100+"vw";
-
-        c.style.fontSize=
-            (15+Math.random()*25)+"px";
-
-        c.style.animationDuration=
-            (2+Math.random()*3)+"s";
-
-        c.style.animationDelay=
-            Math.random()*2+"s";
-
-        document.body.appendChild(c);
-
-        setTimeout(()=>{
-            c.remove();
-        },6000);
-    }
+function playMemory(){
+ let seq=[0,1,2,3].sort(()=>Math.random()-.5);$('gameArea').innerHTML='<div style="width:100%"><h3 style="color:#a43b65;margin-bottom:15px">Remember this little love sequence:</h3><div style="font-size:34px;margin-bottom:18px">🌹 💗 🎀</div><button class="primary" id="rememberBtn">I remember!</button><div id="memAnswers" style="display:none;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:15px"></div></div>';
+ $('rememberBtn').onclick=()=>{let a=$('memAnswers');a.style.display='flex';['🌹 💗 🎀','🎀 🌹 💗','💗 🎀 🌹','🌹 🎀 💗'].forEach((s,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=s;b.onclick=()=>{if(i===0)completeLevel();else b.textContent='Not quite 💞'};a.appendChild(b)})};
 }
-
-
-/* =========================
-   RESTART
-========================= */
-
-function restartGame(){
-
-    location.reload();
-
+function completeLevel(){
+ if(state.completed.includes(currentLevel))return;
+ clearTimeout(roseTimer);state.completed.push(currentLevel);state.today.push(currentLevel);save();updateProgress();$('gameArea').innerHTML='<div style="text-align:center"><div style="font-size:58px">💖</div><h3 style="color:#b93468;margin-top:10px">Quest complete, my love!</h3></div>';$('score').textContent='Level unlocked with love ❤️';$('poem').classList.add('show');
+ const actions=$('actions');actions.innerHTML='';
+ if(state.today.length===DAILY){
+   $('dailyEnding').classList.add('show');let ix=(currentLevel-1)%endings.length;$('endingTitle').textContent=`Your Day ${Math.ceil(currentLevel/3)} ending 💗`;$('endingText').textContent=endings[ix];
+   if(state.completed.length===TOTAL){$('endingTitle').textContent='You completed all 100 levels!';$('endingText').textContent='Aya, you completed my little game. But my love for you has NO final level. ❤️';}
+   const b=document.createElement('button');b.className='primary';b.textContent=state.completed.length===TOTAL?'Open the final surprise 🎀':'Finish today with love 💗';b.onclick=()=>{if(state.completed.length===TOTAL){$('gameCard').style.display='none';$('finalScreen').classList.add('show');$('surpriseVideo').play().catch(()=>{});window.scrollTo({top:0,behavior:'smooth'})}else lockForToday()};actions.appendChild(b);
+ }else{
+   const b=document.createElement('button');b.className='primary';b.textContent='Next little quest 💌';b.onclick=()=>loadLevel(todaysLevel());actions.appendChild(b);
+ }
+ confetti();
 }
+function confetti(){const symbols=['❤️','🌹','🎀','💕','✨'];for(let i=0;i<26;i++){let c=document.createElement('div');c.className='confetti';c.textContent=symbols[Math.floor(Math.random()*symbols.length)];c.style.left=Math.random()*100+'vw';c.style.fontSize=(14+Math.random()*18)+'px';c.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),4500)}}
+$('videoButton').onclick=()=>{let v=$('surpriseVideo');if(v.paused){v.play().then(()=>{v.muted=false;$('videoButton').textContent='🔇 Mute video'}).catch(()=>showToast('Tap the video itself to play ❤️'))}else{v.muted=!v.muted;$('videoButton').textContent=v.muted?'🔊 Tap for sound ❤️':'🔇 Mute video'}};
+function background(){for(let i=0;i<22;i++){let e=document.createElement('div');e.className='floaty';e.textContent=Math.random()>.5?'♡':'🌸';e.style.left=Math.random()*100+'%';e.style.fontSize=(18+Math.random()*20)+'px';e.style.animationDuration=(8+Math.random()*12)+'s';e.style.animationDelay=(-Math.random()*15)+'s';$('background').appendChild(e)}}
 
+
+background();init();
 </script>
-
 </body>
 </html>
