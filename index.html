@@ -1,244 +1,980 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr" dir="ltr">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fff1f6">
-<title>For Aya ❤️</title>
+<title>100 Roses ♡ For My Love</title>
+<!-- Google Fonts for typography and handwriting accents -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-:root{--rose:#e94f83;--rose-dark:#a52d5a;--pink:#fff0f5;--ink:#542039;--muted:#9c6b80;--line:#f5c7d7;--glass:rgba(255,255,255,.83)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',Arial,sans-serif;min-height:100vh;color:var(--ink);background:radial-gradient(ellipse at 15% 10%,#ffe0eb 0,transparent 38%),radial-gradient(ellipse at 90% 80%,#ffd6e5 0,transparent 35%),linear-gradient(135deg,#fff8fb,#ffedf4 55%,#fff9fb);overflow-x:hidden}
-button{font:inherit;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,filter .2s}
-button:hover{transform:translateY(-2px);filter:saturate(1.1)}button:active{transform:scale(.97)}
-button:focus-visible{outline:3px solid #b82d63;outline-offset:3px}
-.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.floaty{position:absolute;bottom:-60px;animation:floatUp linear infinite;opacity:.5}
-@keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
-.shell{position:relative;z-index:1;width:min(100% - 28px,760px);margin:auto;padding:28px 0 55px}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
-.brand{font-weight:800;letter-spacing:.02em;color:var(--rose-dark);font-size:14px}
-.today-pill{border:1px solid var(--line);background:#ffffffb8;border-radius:99px;padding:9px 13px;font-size:12px;font-weight:700;color:var(--rose-dark)}
-.hero{text-align:center;padding:26px 12px 24px}
-.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:800;color:var(--rose);margin-bottom:12px}
-h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,9vw,66px);line-height:1.08;color:#c33c70;text-shadow:0 8px 30px #f4a6c5a0}
-.subtitle{max-width:480px;margin:14px auto 0;color:#87536b;font-size:15px;line-height:1.7}
-.progress-card,.card{background:var(--glass);border:1px solid #fff;box-shadow:0 18px 55px #a63c6412,0 2px 12px #a63c6409;backdrop-filter:blur(16px);border-radius:28px}
-.progress-card{padding:20px 22px;margin-bottom:18px}
-.progress-head{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;font-weight:700;margin-bottom:12px}
-.progress-head span:last-child{color:var(--rose-dark)}
-.track{height:10px;background:#f9dce7;border-radius:20px;overflow:hidden}
-.track-fill{height:100%;width:0;background:linear-gradient(90deg,#f6a0bf,#d83e78);border-radius:20px;transition:width .5s ease}
-.days{display:flex;gap:8px;margin-top:17px}
-.day{flex:1;text-align:center;padding:10px 4px;border-radius:15px;background:#fff4f8;border:1px solid #f9dbe6;color:#a76a83;font-size:11px;font-weight:700}
-.day b{display:block;font-size:18px;color:#cc5782;margin-bottom:3px}
-.day.done{background:#ffe0ec;border-color:#f4a8c4;color:#8f3156}
-.day.active{background:linear-gradient(135deg,#e94f83,#c83a70);color:white;box-shadow:0 7px 18px #e94f8340}
-.day.active b{color:white}
-.card{padding:clamp(22px,5vw,38px);text-align:center}
-.level-meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:99px;background:#fff0f6;border:1px solid #f9d5e3;color:#a43b65;font-size:12px;font-weight:800}
-.emoji{font-size:54px;margin:6px 0 12px;filter:drop-shadow(0 8px 12px #ed9bbd50)}
-h2{font-family:'Playfair Display',Georgia,serif;color:#b93468;font-size:clamp(24px,5vw,34px);line-height:1.2;margin-bottom:12px}
-.desc{max-width:510px;margin:0 auto 20px;color:#87536b;line-height:1.7;font-size:15px}
-.score{font-weight:800;color:#c13d70;margin:12px 0;font-size:14px}
-.game-area{min-height:205px;position:relative;border:1px dashed #f2b6cc;background:linear-gradient(145deg,#fff8fb,#fff0f6);border-radius:22px;margin:18px 0;padding:18px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;overflow:hidden}
-.primary{background:linear-gradient(135deg,#f16a99,#d83f79);color:white;padding:14px 25px;border-radius:99px;font-weight:800;box-shadow:0 9px 22px #e94f8333}
-.secondary{background:#fff;color:#a43b65;border:1px solid #f3bfd2;padding:12px 19px;border-radius:99px;font-weight:700}
-.answer{background:#fff;color:#8f3659;border:1px solid #f4c4d6;border-radius:16px;padding:13px 17px;font-weight:700;min-width:42%;box-shadow:0 5px 12px #a63c640b}
-.answer:hover{background:#ffe4ee}
-.target{font-size:45px;position:absolute;user-select:none;cursor:pointer;animation:bob 1.3s ease-in-out infinite alternate}
-@keyframes bob{to{transform:translateY(-8px) rotate(8deg)}}
-.heart-tap{font-size:95px;cursor:pointer;user-select:none;animation:pulse 1s infinite;filter:drop-shadow(0 10px 20px #ed7fa750)}
-@keyframes pulse{50%{transform:scale(1.12)}}
-.poem{display:none;margin-top:20px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#fff0f6,#ffe1ec);border:1px solid #f4b6cc;animation:appear .7s ease}
-.poem.show{display:block}.poem h3{color:#c13d70;margin-bottom:12px}.poemText{direction:rtl;font-family:Georgia,serif;font-size:20px;line-height:2}
-.daily-ending{display:none;margin-top:18px;padding:24px 18px;background:linear-gradient(135deg,#fff0f6,#ffe1ec);border:1px solid #f3b3ca;border-radius:22px;animation:appear .7s ease}
-.daily-ending.show{display:block}.daily-ending h3{font-family:'Playfair Display',Georgia,serif;color:#bd356a;font-size:27px;margin-bottom:10px}
-.end-text{line-height:1.8;color:#81465f}
-.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-.note{font-size:12px;color:#b17b91;margin-top:18px;line-height:1.6}
-.final{display:none;text-align:center}.final.show{display:block}
-.videoSection{margin-top:22px;padding:20px;border-radius:22px;background:#fff0f6;border:1px solid #f3b3ca}
-.videoWrapper{width:min(100%,300px);aspect-ratio:9/16;margin:15px auto;border-radius:18px;overflow:hidden;background:#160811;box-shadow:0 12px 30px #a63c6430}
-video{width:100%;height:100%;object-fit:cover}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;background:#64233f;color:white;padding:12px 18px;border-radius:99px;box-shadow:0 8px 30px #64233f33;font-size:13px;font-weight:700;display:none;max-width:90%;text-align:center}
-.toast.show{display:block;animation:appear .25s ease}
-.confetti{position:fixed;top:-20px;z-index:9;pointer-events:none;animation:fall 3s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
-@keyframes appear{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
-@media(max-width:520px){.shell{width:min(100% - 20px,760px);padding-top:15px}.topbar{align-items:flex-start}.progress-card{padding:17px}.days{gap:5px}.day{font-size:10px}.day b{font-size:16px}.game-area{min-height:220px;padding:12px}.answer{min-width:100%}.poemText{font-size:18px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+:root {
+  --pink-primary: #ff6599;
+  --pink-light: #ffb3d1;
+  --pink-soft: #fff0f6;
+  --pink-dark: #d83a73;
+  --text-dark: #522d3e;
+  --text-muted: #8c5b70;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-card: rgba(255, 240, 245, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --shadow-soft: 0 12px 32px rgba(217, 75, 136, 0.18);
+  --shadow-btn: 0 8px 20px rgba(255, 101, 153, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 200, 225, 0.8) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(230, 200, 255, 0.7) 0%, transparent 25%),
+    linear-gradient(135deg, #ffd3e2 0%, #fbe3ee 40%, #eed5fb 100%);
+  background-attachment: fixed;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  background: rgba(140, 50, 90, 0.38);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.05);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  padding: 4px 8px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #ffd0e3;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.brand-text p {
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-quote {
+  margin-top: auto;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  line-height: 1.35;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.main-wrapper {
+  margin-left: 250px;
+  flex: 1;
+  padding: 24px 36px 40px;
+  max-width: 1250px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.top-pill {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(217, 75, 136, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.top-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.hero-banner {
+  position: relative;
+  border-radius: 32px;
+  padding: 45px 30px;
+  background: 
+    linear-gradient(135deg, rgba(255, 170, 200, 0.65), rgba(220, 130, 180, 0.55)),
+    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80') center/cover;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-banner h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 60px;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 0 3px 12px rgba(180, 40, 90, 0.4);
+  letter-spacing: 1px;
+}
+
+.hero-banner p {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 8px 0 22px;
+  max-width: 550px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  line-height: 1.5;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6599, #d83a73);
+  color: #fff;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(255, 101, 153, 0.45);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 22px;
+}
+
+.glass-card {
+  background: var(--glass-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.widget-title {
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px 0;
+  color: var(--pink-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.widget-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 18px 0;
+  font-weight: 700;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.challenge-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  padding: 16px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(217, 75, 136, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(217, 75, 136, 0.16);
+}
+
+.challenge-card .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(216, 58, 115, 0.85);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.challenge-card .status-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #e8fff2;
+  color: #23824d;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 800;
+  border: 1px solid #bdf2d0;
+  z-index: 2;
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 110px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffd3e2, #eec0ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.challenge-card h3 {
+  font-size: 15px;
+  margin: 4px 0;
+  color: var(--text-dark);
+  font-weight: 800;
+}
+
+.challenge-card p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.challenge-card.locked {
+  opacity: 0.65;
+  filter: grayscale(0.2);
+}
+
+.btn-card {
+  background: linear-gradient(135deg, #ff6599, #ff4d8d);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(255, 77, 141, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-card:hover {
+  background: linear-gradient(135deg, #ff4d8d, #d83a73);
+  box-shadow: 0 6px 16px rgba(255, 77, 141, 0.4);
+}
+
+.side-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-bar-container {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6599, #a875d8);
+  width: 0%;
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timer-box {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--pink-dark);
+  text-align: center;
+  margin: 6px 0;
+  letter-spacing: 1px;
+}
+
+.love-note-card {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--pink-dark);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  border: 2px dashed #ffb3d1;
+  line-height: 1.2;
+}
+
+.view { display: none; }
+.view.active { display: block; }
+
+/* Interactive Game Arena */
+.arena {
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(255, 250, 253, 0.9), rgba(255, 238, 246, 0.9));
+  border: 2px solid #fff;
+  border-radius: 26px;
+  margin-top: 15px;
+  padding: 20px;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.arena h2 {
+  text-align: center;
+  color: var(--pink-dark);
+  margin: 5px 0 10px;
+}
+
+.game-btn {
+  background: var(--pink-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 101, 153, 0.3);
+}
+
+/* Modal and Toasts */
+.poem-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(80, 30, 50, 0.45);
+  backdrop-filter: blur(10px);
+  display: none;
+  place-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.poem-modal.show { display: grid; }
+
+.poem-card-pop {
+  max-width: 520px;
+  width: 100%;
+  background: #fff8fc;
+  border-radius: 32px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  border: 3px solid #fff;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%) translateY(30px);
+  background: var(--text-dark);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 110;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media(max-width: 960px) {
+  .sidebar { width: 70px; padding: 16px 8px; }
+  .brand-text, .nav-item span:last-child, .sidebar-quote { display: none; }
+  .main-wrapper { margin-left: 70px; padding: 16px; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
-<div class="bg" id="background"></div>
-<main class="shell">
-  <div class="topbar"><div class="brand">♡ A LITTLE WORLD FOR AYA</div><div class="today-pill" id="datePill">🌷 YOUR DAILY LOVE QUEST</div></div>
-  <header class="hero">
-    <div class="eyebrow">made with all my heart</div>
-    <h1>For Aya <span>♥</span></h1>
-    <p class="subtitle">100 little levels, a hundred reasons to smile, and a love that never runs out. Your next little adventure is waiting, my love.</p>
-  </header>
-  <section class="progress-card">
-    <div class="progress-head"><span>Our love adventure</span><span id="overallText">0 / 100 levels</span></div>
-    <div class="track"><div class="track-fill" id="overallFill"></div></div>
-    <div class="days" id="dailySlots">
-      <div class="day" id="slot0"><b>♡</b>Quest 1</div><div class="day" id="slot1"><b>♡</b>Quest 2</div><div class="day" id="slot2"><b>♡</b>Quest 3</div>
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">🐱</div>
+    <div class="brand-text">
+      <h1>100 Roses ♡</h1>
+      <p>For My Love ♡</p>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <button class="nav-item active" data-view="home" onclick="showView('home')">
+      <span>🏠</span> <span>Accueil</span>
+    </button>
+    <button class="nav-item" data-view="challenges" onclick="showView('challenges')">
+      <span>🎁</span> <span>Mes défis</span>
+    </button>
+    <button class="nav-item" data-view="poems" onclick="showView('poems')">
+      <span>💌</span> <span>Mes poèmes</span>
+    </button>
+    <button class="nav-item" data-view="about" onclick="showView('about')">
+      <span>⚙️</span> <span>Paramètres</span>
+    </button>
+  </nav>
+
+  <div class="sidebar-quote">
+    Chaque défi est une rose...<br>et chaque rose est un poème pour toi ♡
+  </div>
+</aside>
+
+<main class="main-wrapper">
+  <div class="top-bar">
+    <div class="top-pill">Ma chérie 💗</div>
+    <div class="top-pill" onclick="toggleAudio()">🎵 🔊</div>
+  </div>
+
+  <!-- HOME VIEW -->
+  <section id="home" class="view active">
+    <div class="hero-banner">
+      <h2>100 Défis ♡ pour toi ♡</h2>
+      <p>100 petites surprises, 100 poèmes, 100 façons de te dire que je t'aime.</p>
+      <button class="btn-primary" onclick="showView('challenges')">Commencer un défi ✨</button>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Daily Challenges Column -->
+      <div class="glass-card">
+        <h3 class="widget-title">💖 Défis du jour</h3>
+        <p class="widget-subtitle">Choisis un défi parmi tes 3 autorisés aujourd'hui</p>
+        <div class="cards-grid" id="dailyCardsGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Right Side Progress Widgets -->
+      <div class="side-widgets">
+        <div class="glass-card">
+          <div class="stat-box">
+            <div>
+              <strong style="font-size:15px">Tes défis du jour</strong>
+              <div style="font-size:11px; color:var(--text-muted)">Se renouvelle à 00:00</div>
+            </div>
+            <span style="font-size:22px; font-weight:900; color:var(--pink-dark)" id="todayCountText">0/3</span>
+          </div>
+          <div style="display:flex; gap:8px; font-size:22px; justify-content:center; margin-top:10px;" id="heartsDisplay">
+            💗 💗 💗
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="stat-box">
+            <strong style="font-size:15px">Ta progression</strong>
+            <span style="font-weight:800; color:var(--pink-dark)" id="totalDoneText">0/100</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="glass-card" style="text-align:center;">
+          <div style="font-size:12px; font-weight:700; color:var(--text-muted)">Prochain défi disponible dans</div>
+          <div class="timer-box" id="countdownTimer">12:36:17 ♡</div>
+        </div>
+
+        <div class="love-note-card">
+          Tu es ma plus belle aventure ♡
+        </div>
+      </div>
     </div>
   </section>
-  <section class="card" id="gameCard">
-    <div class="level-meta"><span class="chip" id="levelChip">🌹 LEVEL 1 / 100</span><span class="chip" id="streakChip">✨ 3 quests per day</span></div>
-    <div class="emoji" id="mainEmoji">🎀</div>
-    <h2 id="title">Catch my roses</h2>
-    <p class="desc" id="description">Ayaaa, some roses escaped because they know how much I love you. Catch 5 roses to start today's love story!</p>
-    <div class="score" id="score">Roses caught: 0 / 5</div>
-    <div class="game-area" id="gameArea"></div>
-    <button class="primary" id="startBtn">Start today's quest 🌹</button>
-    <div class="poem" id="poem"><h3>🌹 A little poem for you 🌹</h3><div class="poemText" id="levelPoemText"></div></div>
-    <div class="daily-ending" id="dailyEnding"><h3 id="endingTitle">Your little daily surprise 💗</h3><p class="end-text" id="endingText"></p><p class="poemText" style="margin-top:12px">يا آيةَ القلبِ يا نبضاً أعيشُ بهِ<br>ويا أجملَ ما قد صادفَتْهُ حياتي<br>إن كان للحبِّ عنوانٌ أريدُهُ<br>فاسمُكِ عندي أجملُ الكلماتِ ❤️</p></div>
-    <div class="actions" id="actions"></div>
-    <p class="note" id="note">A new set of 3 little quests unlocks every day. Your progress stays saved on this device. ❤️</p>
+
+  <!-- ALL CHALLENGES VIEW -->
+  <section id="challenges" class="view">
+    <div class="glass-card">
+      <h2 class="widget-title">Tous les 100 défis 🌹</h2>
+      <p class="widget-subtitle">Chaque jour, 3 nouveaux défis se débloquent.</p>
+      <div class="cards-grid" id="allChallengesGrid" style="margin-top:15px;"></div>
+    </div>
   </section>
-  <section class="card final" id="finalScreen" style="margin-top:18px">
-    <div class="emoji">🎀🌹🎀</div><h2>100 little levels. One endless love.</h2>
-    <p class="desc">Aya, you finished every little adventure I made for you. But my love for you has no final level. ❤️</p>
-    <div class="poem show"><h3>💗 إلى آية 💗</h3><div class="poemText">يا آيةَ القلبِ يا نبضاً أعيشُ بهِ<br>ويا أجملَ ما قد صادفَتْهُ حياتي<br>إن كان للحبِّ عنوانٌ أريدُهُ<br>فاسمُكِ عندي أجملُ الكلماتِ ❤️</div></div>
-    <div class="videoSection"><h3>🎀 One Last Surprise 🎀</h3><p class="desc">You finished all 100 levels... now I have one last surprise for you. ❤️</p><div class="videoWrapper"><video id="surpriseVideo" controls playsinline preload="metadata" muted loop><source src="surprise.mp4" type="video/mp4">Your browser does not support video.</video></div><button class="primary" id="videoButton">🔊 Tap for sound ❤️</button></div>
+
+  <!-- GAME ARENA VIEW -->
+  <section id="game" class="view">
+    <div class="glass-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <button class="game-btn" onclick="showView('challenges')">← Retour aux défis</button>
+        <div id="gameCounter" style="font-weight:800; color:var(--pink-dark);"></div>
+      </div>
+      <div class="arena" id="arena"></div>
+    </div>
+  </section>
+
+  <!-- POEMS GALLERY VIEW -->
+  <section id="poems" class="view">
+    <div class="glass-card">
+      <h2 class="widget-title">Collection des poèmes 💌</h2>
+      <p class="widget-subtitle">Chaque poème se débloque après avoir réussi son défi.</p>
+      <div class="cards-grid" id="poemGrid" style="margin-top:15px;"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT & SETTINGS VIEW -->
+  <section id="about" class="view">
+    <div class="glass-card" style="line-height: 1.8;">
+      <h2 class="widget-title">À propos du jeu 🌸</h2>
+      <p>Cette application fonctionne entièrement dans votre navigateur et sauvegarde votre progression localement.</p>
+      <ul>
+        <li>3 défis uniques chaque jour.</li>
+        <li>100 poèmes d'amour originaux à débloquer.</li>
+        <li>La progression est conservée automatiquement.</li>
+      </ul>
+      <button class="btn-primary" onclick="resetAll()" style="background: linear-gradient(135deg, #ff4d4d, #c62828); margin-top:20px;">
+        Réinitialiser toute la progression
+      </button>
+    </div>
   </section>
 </main>
+
+<div class="poem-modal" id="poemModal">
+  <div class="poem-card-pop">
+    <div style="font-size:50px; margin-bottom:10px;">🌹</div>
+    <h2 id="poemTitle" style="color:var(--pink-dark); margin:0 0 15px 0; font-family:'Caveat', cursive; font-size:36px;"></h2>
+    <div id="poemText" style="font-size:17px; line-height:1.8; color:var(--text-dark); margin-bottom:25px;"></div>
+    <button class="btn-primary" onclick="closePoem()">Garder dans mon cœur 💗</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
+
 <script>
-const TOTAL=100, DAILY=3;
-const endings=[
-"Every rose in this little game is a tiny reminder that I choose you, today and every day. 🌹",
-"If I could pause one moment forever, it would be a moment with you. ❤️",
-"You make ordinary days feel like the sweetest memories. I love you, Aya. ✨",
-"Today’s little quest is over, but my heart is still choosing you, over and over. 💗",
-"You're my favorite notification, my safest place, and my happiest thought. 🎀",
-"No matter how many levels we finish, there will always be another reason to love you. 🌷",
-"Three little quests today, a million thoughts of you every day. I adore you. 💞",
-"Somehow the world got softer and brighter when you came into my life. ❤️",
-"I hope this tiny surprise makes you smile as much as you make me smile. 🌹",
-"Level complete: you still have my whole heart. No unlock code needed. 🔐❤️"
+// COMPLETE 100 CHALLENGES DATA ARRAY
+const CHALLENGES = [
+  {"title":"وردة اليوم 🌹","type":"click","hint":"Click the rose 5 times before it moves!","poem":["يا الورد هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"قلبي السريع 💓","type":"reaction","hint":"Click the heart as soon as it appears.","poem":["يا القمر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"اجمع النجوم ⭐","type":"collect","hint":"Catch 7 falling stars.","poem":["يا النجوم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"ذاكرة القلوب 🧠","type":"memory","hint":"Remember the highlighted heart sequence.","poem":["يا المطر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"اكتب كلمة الحب 💌","type":"typing","hint":"Type the secret word exactly.","poem":["يا الفجر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"رتّب القلوب 💗","type":"order","hint":"Click the hearts from 1 to 5.","poem":["يا البحر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"الهروب من الغيوم ☁️","type":"avoid","hint":"Keep the rose away from the clouds for 8 seconds.","poem":["يا النسيم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"المتاهة الوردية 🌸","type":"maze","hint":"Guide the heart to the rose.","poem":["يا الشمس هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"اختاري اللون 🎀","type":"color","hint":"Find the heart with the requested color.","poem":["يا السحاب هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"اضغط في اللحظة ⏱️️","type":"timing","hint":"Stop the bar inside the pink zone.","poem":["يا الفراشات هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"صيد الفراشات 🦋","type":"catch","hint":"Catch 6 butterflies.","poem":["يا الحديقة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"قلب مخفي 🔎","type":"find","hint":"Find the hidden heart.","poem":["يا الليل هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"نجمة واحدة ✨","type":"single","hint":"Find the only different star.","poem":["يا الصباح هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"نبضات متتالية 💞","type":"rhythm","hint":"Tap 6 times following the pulse.","poem":["يا الطريق هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"السهم الصحيح ➡️","type":"direction","hint":"Follow the arrows in the right order.","poem":["يا الموسيقى هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"رسالة مشفّرة 🔐","type":"cipher","hint":"Decode the tiny love message.","poem":["يا الربيع هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"عدّ الورود 🌹","type":"count","hint":"Count the roses and choose the answer.","poem":["يا الياسمين هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"الطريق الأقصر 🛤️","type":"path","hint":"Choose the shortest-looking path.","poem":["يا السماء هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"حركي القطة 🐱","type":"drag","hint":"Drag the cat to the gift.","poem":["يا النسمة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"بالون القلب 🎈","type":"balloon","hint":"Pop 8 heart balloons.","poem":["يا الشمعة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"مطاردة القبلة 💋","type":"chase","hint":"Catch the moving kiss icon.","poem":["يا الورد هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"توازن الحب ⚖️","type":"balance","hint":"Keep the heart centered on the balance.","poem":["يا القمر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"الزهرة المتنقلة 🌺","type":"moving","hint":"Catch the flower 4 times.","poem":["يا النجوم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"قفل صغير 🔒","type":"lock","hint":"Find the 3-digit combination.","poem":["يا المطر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"رتّب النجوم 🌟","type":"sort","hint":"Put stars from smallest to largest.","poem":["يا الفجر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"القلب المختلف ❤️","type":"odd","hint":"Spot the odd heart.","poem":["يا البحر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"خطوة خطوة 👣","type":"steps","hint":"Repeat the displayed step pattern.","poem":["يا النسيم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"اجمع الحروف 🔤","type":"letters","hint":"Collect letters to form a word.","poem":["يا الشمس هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"ضوء القمر 🌙","type":"moon","hint":"Turn on the correct moon lights.","poem":["يا السحاب هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"مطر القلوب 💕","type":"rain","hint":"Catch 10 falling hearts.","poem":["يا الفراشات هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"الباب السري 🚪","type":"doors","hint":"Choose the door with the rose.","poem":["يا الحديقة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"حساب صغير ➕","type":"math","hint":"Solve a cute little number puzzle.","poem":["يا الليل هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"ذاكرة الورود 🌹","type":"match","hint":"Match 4 pairs of roses.","poem":["يا الصباح هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"النجمة الهاربة ⭐","type":"chase","hint":"Catch the star before time ends.","poem":["يا الطريق هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"صندوق المفاجأة 🎁","type":"box","hint":"Open the correct gift box.","poem":["يا الموسيقى هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"القطار الوردي 🚂","type":"sequence","hint":"Complete the pattern.","poem":["يا الربيع هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"قوس قزح 🌈","type":"colorseq","hint":"Repeat the color sequence.","poem":["يا الياسمين هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"نقطة الحب 💗","type":"dots","hint":"Connect the numbered dots.","poem":["يا السماء هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"صوت صامت 🎵","type":"rhythm","hint":"Repeat the rhythm shown on screen.","poem":["يا النسمة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"قلب في المتاهة ❤️","type":"maze2","hint":"Reach the center without touching walls.","poem":["يا الشمعة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"حديقة صغيرة 🌷","type":"garden","hint":"Water the 5 thirsty flowers.","poem":["يا الورد هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"رسالة ناقصة 💌","type":"fill","hint":"Complete the missing letters.","poem":["يا القمر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"نجوم متشابهة 🌟","type":"memory2","hint":"Remember which stars lit up.","poem":["يا النجوم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"كرة القمر 🌙","type":"target","hint":"Hit 5 moving moon targets.","poem":["يا المطر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"مفتاح القلب 🗝️","type":"key","hint":"Find the key among 12 cards.","poem":["يا الفجر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"الوردة الذهبية 🌹","type":"gold","hint":"Catch the golden rose.","poem":["يا البحر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"صائد الأحرف 🔤","type":"letters2","hint":"Click letters in alphabetical order.","poem":["يا النسيم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"رقصة القلوب 💃","type":"dance","hint":"Copy the four displayed directions.","poem":["يا الشمس هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"الساعة الوردية 🕰️","type":"clock","hint":"Set the clock to the shown time.","poem":["يا السحاب هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"قلب فوق السحاب ☁️","type":"balance2","hint":"Keep the heart between two clouds.","poem":["يا الفراشات هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"حكاية من 3 صور 📖","type":"story","hint":"Put three pictures in the right order.","poem":["يا الحديقة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"السرعة القصوى ⚡","type":"speed","hint":"Make 12 correct clicks before time ends.","poem":["يا الليل هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"نجمة في الظلام 🌌","type":"dark","hint":"Reveal the hidden star with your cursor.","poem":["يا الصباح هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"الوردة والريح 🌬️","type":"wind","hint":"Guide the rose through moving wind zones.","poem":["يا الطريق هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"قلبان متشابهان 💕","type":"pair","hint":"Find the two identical hearts.","poem":["يا الموسيقى هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"حروف مبعثرة 🔠","type":"anagram","hint":"Unscramble the love word.","poem":["يا الربيع هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"الكنز الوردي 💎","type":"treasure","hint":"Pick the safe treasure tile.","poem":["يا الياسمين هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"سلم النجوم 🪜","type":"ladder","hint":"Click stars from bottom to top.","poem":["يا السماء هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"المصباح السحري 🪄","type":"lights","hint":"Turn on all hearts with one click pattern.","poem":["يا النسمة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"كرة الثلج ❄️","type":"snow","hint":"Catch 8 pink snowflakes.","poem":["يا الشمعة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"طريق الورود 🌹","type":"road","hint":"Choose the correct rose path.","poem":["يا الورد هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"قفل الألوان 🔴","type":"codecolor","hint":"Enter the shown color code.","poem":["يا القمر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"القطّة والهدية 🐱","type":"catgift","hint":"Move the cat around obstacles to the gift.","poem":["يا النجوم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"دائرة الحب ⭕","type":"circle","hint":"Stop the shrinking circle inside the target.","poem":["يا المطر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"صيد القلوب الطائرة 💗","type":"flying","hint":"Catch 9 flying hearts.","poem":["يا الفجر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"اختبار الذاكرة السريع 🧠","type":"quickmemory","hint":"Remember 5 positions for 2 seconds.","poem":["يا البحر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"الرقم السري 🔢","type":"number","hint":"Guess the hidden number with clues.","poem":["يا النسيم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"نجمة ووردة ⭐🌹","type":"swap","hint":"Swap tiles to put rose and star together.","poem":["يا الشمس هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"البالونات المرقمة 🎈","type":"balloons","hint":"Pop balloons in number order.","poem":["يا السحاب هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"مطر الورد 🌹","type":"rainrose","hint":"Catch 7 roses, avoid gray drops.","poem":["يا الفراشات هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"المربع السحري ✨","type":"grid","hint":"Light every cell exactly once.","poem":["يا الحديقة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"الحرف الضائع 🔤","type":"missing","hint":"Find the missing letter.","poem":["يا الليل هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"قصة صغيرة 📚","type":"story2","hint":"Choose the correct next scene.","poem":["يا الصباح هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"المتاهة الدائرية 🌀","type":"spiral","hint":"Reach the center of the spiral.","poem":["يا الطريق هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"قلب يتنفس 💗","type":"breathe","hint":"Keep the circle in the calm zone.","poem":["يا الموسيقى هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"صندوق الرسائل 📮","type":"mailbox","hint":"Deliver 3 letters to matching boxes.","poem":["يا الربيع هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"النجوم المقلوبة ⭐","type":"reverse","hint":"Click the numbers in reverse.","poem":["يا الياسمين هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"ورقة البرسيم 🍀","type":"clover","hint":"Find the four-leaf clover.","poem":["يا السماء هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"سباق القطة 🐱","type":"race","hint":"Tap to help the cat reach the rose.","poem":["يا النسمة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"الوردة الحمراء 🌹","type":"redrose","hint":"Select every red rose and nothing else.","poem":["يا الشمعة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"مجرة صغيرة 🌌","type":"galaxy","hint":"Connect stars in the displayed constellation.","poem":["يا الورد هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"مفتاحان وقلبان 🗝️","type":"keys","hint":"Use the correct key on the lock.","poem":["يا القمر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"الزهور المتطابقة 🌸","type":"flowerpairs","hint":"Match 5 flower pairs.","poem":["يا النجوم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"حركة واحدة ↔️","type":"oneMove","hint":"Solve the tile puzzle in one move.","poem":["يا المطر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"النغمة الأخيرة 🎶","type":"tone","hint":"Repeat the sequence of symbols.","poem":["يا الفجر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويصبح الغد ألطف حين أتذكر ابتسامتك"]},
+  {"title":"صيد القمر 🌙","type":"mooncatch","hint":"Catch 5 moons before they disappear.","poem":["يا البحر هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويهدأ القلب كلما مرّ طيف الفرح"]},
+  {"title":"القلب المتذبذب 💓","type":"wobble","hint":"Keep the heart inside the moving ring.","poem":["يا النسيم هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى الحكاية أجمل من أي كلام"]},
+  {"title":"رسالة بالمراية 🪞","type":"mirror","hint":"Read the mirrored word.","poem":["يا الشمس هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويكبر في داخلي الامتنان لوجودك"]},
+  {"title":"غابة صغيرة 🌳","type":"forest","hint":"Find the path through the trees.","poem":["يا السحاب هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى لك في القلب وردة لا تذبل"]},
+  {"title":"وردة بين 20 صندوق 📦","type":"boxes","hint":"Find the one box containing the rose.","poem":["يا الفراشات هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتصير الأيام أخف حين نملؤها بالفرح"]},
+  {"title":"أكمل النمط 💖","type":"pattern","hint":"Choose the missing icon.","poem":["يا الحديقة هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويبقى في القلب مكان لابتسامتك"]},
+  {"title":"قلب محظوظ 🍀","type":"lucky","hint":"Find the lucky heart on first try.","poem":["يا الليل هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","وتبقى أجمل التفاصيل في ذاكرتي"]},
+  {"title":"موسيقى القلوب 🎼","type":"notes","hint":"Play the 4 shown music notes.","poem":["يا الصباح هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","ويظل وجودك هدية جميلة للأيام"]},
+  {"title":"نجمة الحظ ✨","type":"starwish","hint":"Make a wish and tap the star.","poem":["يا الطريق هذا المساء، خذ مني سلاماً لطيفاً","ففي القلب أمنية أن تظل أيامك مليئة بالنور","وكل لحظة فرح تمر بك تستحق أن تُحفظ كقصيدة","فتزهر اللحظة حين تمرين بها"]},
+  {"title":"الرسالة الأخيرة 💌","type":"final","hint":"Open the 100th special love poem!","poem":["يا أجمل هدية في الحياة، اليوم اكتملت الـ100 وردة","لكن حبك يزهر كل يوم من جديد","شكراً لأنك أجمل جزء في أيامي ❤️"]}
 ];
-const lovePoems=["يا آيةَ القلبِ يا أجملَ أقداري\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا آيةَ القلبِ يا أجملَ أقداري\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا آيةَ القلبِ يا أجملَ أقداري\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا آيةَ القلبِ يا أجملَ أقداري\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا آيةَ القلبِ يا أجملَ أقداري\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا آيةَ القلبِ يا أجملَ أقداري\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا آيةَ القلبِ يا أجملَ أقداري\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا آيةَ القلبِ يا أجملَ أقداري\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا آيةَ القلبِ يا أجملَ أقداري\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا آيةَ القلبِ يا أجملَ أقداري\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "حينَ أراكِ يهدأُ كلُّ شيءٍ بداخلي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أنتِ أولُ فكرةٍ تزورني صباحاً\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا من جعلتِ للحياةِ معنىً جميلاً\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا من جعلتِ للحياةِ معنىً جميلاً\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا من جعلتِ للحياةِ معنىً جميلاً\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا من جعلتِ للحياةِ معنىً جميلاً\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا من جعلتِ للحياةِ معنىً جميلاً\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا من جعلتِ للحياةِ معنىً جميلاً\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "في عينيكِ أرى حكايةً لا تنتهي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "في عينيكِ أرى حكايةً لا تنتهي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "في عينيكِ أرى حكايةً لا تنتهي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "في عينيكِ أرى حكايةً لا تنتهي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "في عينيكِ أرى حكايةً لا تنتهي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "في عينيكِ أرى حكايةً لا تنتهي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "في عينيكِ أرى حكايةً لا تنتهي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "في عينيكِ أرى حكايةً لا تنتهي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "في عينيكِ أرى حكايةً لا تنتهي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "في عينيكِ أرى حكايةً لا تنتهي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أحبُّ فيكِ قلبكِ قبلَ ملامحكِ\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا أجملَ صدفةٍ غيّرتْ حياتي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "كلما مرَّ يومٌ أحبكِ أكثر\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "كلما مرَّ يومٌ أحبكِ أكثر\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "كلما مرَّ يومٌ أحبكِ أكثر\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "كلما مرَّ يومٌ أحبكِ أكثر\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "كلما مرَّ يومٌ أحبكِ أكثر\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "كلما مرَّ يومٌ أحبكِ أكثر\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "كلما مرَّ يومٌ أحبكِ أكثر\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "كلما مرَّ يومٌ أحبكِ أكثر\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "كلما مرَّ يومٌ أحبكِ أكثر\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "كلما مرَّ يومٌ أحبكِ أكثر\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "أنتِ وطنٌ صغيرٌ داخلَ قلبي\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹", "يا آيةَ الروحِ يا دفءَ المساءِ\\nومعكِ أريدُ أن أكتبَ عمري كلَّهُ، دونَ نهايةٍ أو فراقٍ ❤️", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوكأنَّ قلبي وجدَ أخيراً المكانَ الذي ينتمي إليهِ 💗", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوأنتِ أجملُ أمنيةٍ أبدأُ بها كلَّ يومٍ جديدٍ 🌷", "يا آيةَ الروحِ يا دفءَ المساءِ\\nفوجودُكِ بقربي يجعلُ حتى التفاصيلَ الصغيرةَ جميلةً 🌹", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوفي صوتكِ يسكنُ شيءٌ من السلامِ الذي أبحثُ عنهُ ✨", "يا آيةَ الروحِ يا دفءَ المساءِ\\nفروحكِ عندي أغلى من كلِّ الكلماتِ وأصدقُ من كلِّ القصائدِ 💞", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوشكراً لأنكِ جعلتِ قلبي يعرفُ معنى الحبِّ الحقيقيِّ ❤️", "يا آيةَ الروحِ يا دفءَ المساءِ\\nوكأنَّ قلبي لا يعرفُ في الحبِّ إلا الزيادةَ كلَّ يومٍ 💗", "يا آيةَ الروحِ يا دفءَ المساءِ\\nكلما تعبتُ عدتُ إليكِ، فوجدتُ في قربكِ راحتي وأمانيَّ 🌸", "يا آيةَ الروحِ يا دفءَ المساءِ\\nومهما تغيّرتِ الأيامُ سيبقى اسمكِ أجملَ ما في حكايتي 🌹"];
 
-const titles=["Catch my roses","A question from my heart","Catch my heart","Find the hidden love","Pick a little promise","The heart says…","A tiny memory","Choose your flower","Love is in the details","One more heartbeat"];
-const descriptions=["Catch the roses before they float away!","A little question, with one answer my heart already knows.","Tap my heart ten times to unlock a sweet message.","Find the hidden heart among the flowers.","Choose the promise you want me to keep.","Follow your heart and choose the right answer.","A tiny memory game, made just for you.","Pick the flower that reminds me of you.","A little detail about my favorite person.","Tap the heart and collect a little love."];
-const questions=[
-{q:"What does Atef want the most? 👀",a:["🍕 Pizza","🎮 Video games","💗 Aya","💰 Money"],correct:2},
-{q:"Where does my favorite place begin?",a:["At the beach","Wherever you are ❤️","At the mall","In a game"],correct:1},
-{q:"What do I want more of with you?",a:["More memories","More adventures","More hugs","All of these 💗"],correct:3},
-{q:"What is my favorite notification?",a:["A game invite","Your name on my screen ❤️","A sale","The weather"],correct:1},
-{q:"What will never change?",a:["My favorite food","My love for you ❤️","My phone","My playlist"],correct:1}
-];
-const $=id=>document.getElementById(id);
-const key='ayaLoveQuest_v2';
-let state=loadState(), runCount=0, roseTimer=null, currentLevel=1, heartClicks=0, toastTimer;
-function loadState(){try{let s=JSON.parse(localStorage.getItem(key));if(s&&Array.isArray(s.completed))return s}catch(e){}return {completed:[],dayKey:todayKey(),today:[]}}
-function todayKey(){let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function refreshDay(){const k=todayKey();if(state.dayKey!==k){state.dayKey=k;state.today=[];save()} }
-function save(){localStorage.setItem(key,JSON.stringify(state))}
-function nextLevel(){for(let i=1;i<=TOTAL;i++)if(!state.completed.includes(i))return i;return 101}
-function todaysLevel(){refreshDay();return state.today.length<DAILY?nextLevel():null}
-function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3000)}
-function updateProgress(){
- const done=state.completed.length;$('overallText').textContent=`${done} / ${TOTAL} levels`;$('overallFill').style.width=(done/TOTAL*100)+'%';
- for(let i=0;i<3;i++){let el=$('slot'+i);el.className='day '+(i<state.today.length?'done':i===state.today.length?'active':'');el.innerHTML=`<b>${i<state.today.length?'✓':i+1}</b>${i<state.today.length?'Complete':'Quest '+(i+1)}`}
-}
-function init(){
- refreshDay();updateProgress();
- const d=new Date();$('datePill').textContent=d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
- const n=todaysLevel();
- if(nextLevel()>TOTAL){$('gameCard').style.display='none';$('finalScreen').classList.add('show');return}
- if(n===null){lockForToday();return}
- loadLevel(n);
-}
-function lockForToday(){
- $('levelChip').textContent='💗 TODAY’S QUESTS COMPLETE';$('mainEmoji').textContent='🌙';$('title').textContent='That’s all for today, my love';$('description').textContent='You finished your 3 little quests for today. Come back tomorrow for 3 new levels and a brand-new daily ending. I love you, Aya. ❤️';$('score').textContent='3 / 3 quests completed today';$('gameArea').innerHTML='<div style="font-size:58px">💐</div>';$('startBtn').style.display='none';$('poem').classList.remove('show');$('dailyEnding').classList.add('show');$('endingTitle').textContent='See you tomorrow, Aya 🌙';$('endingText').textContent='The day may be over, but loving you is my favorite thing to do. Sleep with a smile, my love. ❤️';$('actions').innerHTML='';$('note').textContent='Your next 3 levels unlock automatically tomorrow on this device.';updateProgress();
-}
-function loadLevel(n){
- currentLevel=n;$('levelChip').textContent=`🌹 LEVEL ${n} / ${TOTAL}`;$('streakChip').textContent=`✨ Quest ${state.today.length+1} of 3 today`;
- const type=(n-1)%10;$('mainEmoji').textContent=['🌹','💌','❤️','🌸','🎀','💞','📸','🌷','✨','💓'][type];
- $('title').textContent=`Level ${n} — ${titles[type]}`;$('description').textContent=descriptions[type];$('score').textContent='';$('gameArea').innerHTML='';$('startBtn').style.display='inline-block';$('startBtn').textContent='Start this quest 💗';$('poem').classList.remove('show');$('levelPoemText').innerHTML=lovePoems[n-1].replace(/\\n/g,'<br>');$('dailyEnding').classList.remove('show');$('actions').innerHTML='';$('note').textContent='A new set of 3 little quests unlocks every day. Your progress stays saved on this device. ❤️';
- $('startBtn').onclick=()=>startLevel(type);
- updateProgress();
-}
-function startLevel(type){
- $('startBtn').style.display='none';$('gameArea').innerHTML='';$('score').textContent='';
- if(type===0)playRoses();else if(type===1||type===4||type===7||type===8)playQuestion(type);else if(type===2||type===5||type===9)playHeart();else if(type===3)playFindHeart();else playMemory();
-}
-function playRoses(){
- let caught=0;const area=$('gameArea');area.style.display='block';area.innerHTML='';
- $('score').textContent='Roses caught: 0 / 5';
- area.style.position='relative';
- function spawn(){
-   if(caught>=5)return;
-   area.querySelectorAll('.target').forEach(x=>x.remove());
-   const r=document.createElement('button');
-   r.className='target';r.textContent='🌹';
-   r.setAttribute('aria-label','Catch the rose');
-   r.style.position='absolute';r.style.left='4%';r.style.top='38%';
-   r.style.transition='left 5.5s linear, top 5.5s ease-in-out';
-   r.style.fontSize='43px';r.style.background='transparent';r.style.border='0';
-   r.onclick=()=>{
-     caught++;$('score').textContent=`Roses caught: ${caught} / 5`;
-     r.remove();clearTimeout(roseTimer);
-     if(caught>=5){completeLevel()}else{spawn()}
-   };
-   area.appendChild(r);
-   // Let the rose drift slowly from one side to the other, then gently back.
-   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-     if(!r.isConnected)return;
-     r.style.left='78%';r.style.top=(12+Math.random()*58)+'%';
-   }));
-   roseTimer=setTimeout(()=>{
-     if(!r.isConnected||caught>=5)return;
-     r.style.transition='left 5.5s linear, top 5.5s ease-in-out';
-     r.style.left='4%';r.style.top=(12+Math.random()*58)+'%';
-     roseTimer=setTimeout(spawn,5600);
-   },5600);
- }
- spawn();
-}
-function playQuestion(type){
- const q=questions[(currentLevel+type)%questions.length];$('gameArea').innerHTML=`<div style="width:100%"><h3 style="margin-bottom:15px;color:#a43b65">${q.q}</h3><div id="answers" style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center"></div></div>`;
- q.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>{if(i===q.correct){$('score').textContent='That’s right, my love! 💗';completeLevel()}else{b.textContent='Try again, sweetheart 😘';b.style.background='#ffe4ee'}};$('answers').appendChild(b)});
-}
-function playHeart(){
- heartClicks=0;$('gameArea').innerHTML='<div style="text-align:center"><div class="heart-tap" id="heartTap">❤️</div><p style="margin-top:10px;color:#98516e;font-weight:700">Tap my heart 10 times!</p></div>';$('score').textContent='Heart taps: 0 / 10';
- $('heartTap').onclick=()=>{heartClicks++;$('score').textContent=`Heart taps: ${heartClicks} / 10`;if(heartClicks>=10)completeLevel()};
-}
-function playFindHeart(){
- let opts=['🌹','🌸','💗','🌷','🎀','💖'];let correct=Math.floor(Math.random()*opts.length);
- $('gameArea').innerHTML='<div style="width:100%"><h3 style="color:#a43b65;margin-bottom:18px">Find the one that holds my heart 💕</h3><div id="flowers" style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap"></div></div>';
- opts.forEach((x,i)=>{let b=document.createElement('button');b.className='answer';b.style.minWidth='60px';b.style.fontSize='28px';b.textContent=x;b.onclick=()=>{if(i===correct)completeLevel();else{b.textContent='🌹';b.disabled=true}};$('flowers').appendChild(b)});
-}
-function playMemory(){
- let seq=[0,1,2,3].sort(()=>Math.random()-.5);$('gameArea').innerHTML='<div style="width:100%"><h3 style="color:#a43b65;margin-bottom:15px">Remember this little love sequence:</h3><div style="font-size:34px;margin-bottom:18px">🌹 💗 🎀</div><button class="primary" id="rememberBtn">I remember!</button><div id="memAnswers" style="display:none;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:15px"></div></div>';
- $('rememberBtn').onclick=()=>{let a=$('memAnswers');a.style.display='flex';['🌹 💗 🎀','🎀 🌹 💗','💗 🎀 🌹','🌹 🎀 💗'].forEach((s,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=s;b.onclick=()=>{if(i===0)completeLevel();else b.textContent='Not quite 💞'};a.appendChild(b)})};
-}
-function completeLevel(){
- if(state.completed.includes(currentLevel))return;
- clearTimeout(roseTimer);state.completed.push(currentLevel);state.today.push(currentLevel);save();updateProgress();$('gameArea').innerHTML='<div style="text-align:center"><div style="font-size:58px">💖</div><h3 style="color:#b93468;margin-top:10px">Quest complete, my love!</h3></div>';$('score').textContent='Level unlocked with love ❤️';$('poem').classList.add('show');
- const actions=$('actions');actions.innerHTML='';
- if(state.today.length===DAILY){
-   $('dailyEnding').classList.add('show');let ix=(currentLevel-1)%endings.length;$('endingTitle').textContent=`Your Day ${Math.ceil(currentLevel/3)} ending 💗`;$('endingText').textContent=endings[ix];
-   if(state.completed.length===TOTAL){$('endingTitle').textContent='You completed all 100 levels!';$('endingText').textContent='Aya, you completed my little game. But my love for you has NO final level. ❤️';}
-   const b=document.createElement('button');b.className='primary';b.textContent=state.completed.length===TOTAL?'Open the final surprise 🎀':'Finish today with love 💗';b.onclick=()=>{if(state.completed.length===TOTAL){$('gameCard').style.display='none';$('finalScreen').classList.add('show');$('surpriseVideo').play().catch(()=>{});window.scrollTo({top:0,behavior:'smooth'})}else lockForToday()};actions.appendChild(b);
- }else{
-   const b=document.createElement('button');b.className='primary';b.textContent='Next little quest 💌';b.onclick=()=>loadLevel(todaysLevel());actions.appendChild(b);
- }
- confetti();
-}
-function confetti(){const symbols=['❤️','🌹','🎀','💕','✨'];for(let i=0;i<26;i++){let c=document.createElement('div');c.className='confetti';c.textContent=symbols[Math.floor(Math.random()*symbols.length)];c.style.left=Math.random()*100+'vw';c.style.fontSize=(14+Math.random()*18)+'px';c.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),4500)}}
-$('videoButton').onclick=()=>{let v=$('surpriseVideo');if(v.paused){v.play().then(()=>{v.muted=false;$('videoButton').textContent='🔇 Mute video'}).catch(()=>showToast('Tap the video itself to play ❤️'))}else{v.muted=!v.muted;$('videoButton').textContent=v.muted?'🔊 Tap for sound ❤️':'🔇 Mute video'}};
-function background(){for(let i=0;i<22;i++){let e=document.createElement('div');e.className='floaty';e.textContent=Math.random()>.5?'♡':'🌸';e.style.left=Math.random()*100+'%';e.style.fontSize=(18+Math.random()*20)+'px';e.style.animationDuration=(8+Math.random()*12)+'s';e.style.animationDelay=(-Math.random()*15)+'s';$('background').appendChild(e)}}
+const TODAY_STR = new Date().toISOString().slice(0, 10);
+let state = JSON.parse(localStorage.getItem('rose_app_state') || JSON.stringify({
+  done: [],
+  lastDate: TODAY_STR,
+  todayDoneCount: 0
+}));
 
+if (state.lastDate !== TODAY_STR) {
+  state.lastDate = TODAY_STR;
+  state.todayDoneCount = 0;
+  localStorage.setItem('rose_app_state', JSON.stringify(state));
+}
 
-background();init();
+let activeChallengeIdx = null;
+
+function initApp() {
+  updateStats();
+  renderDailyCards();
+  renderAllChallenges();
+  renderPoems();
+}
+
+function showView(viewId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  
+  const targetView = document.getElementById(viewId);
+  if (targetView) targetView.classList.add('active');
+  
+  const activeNav = document.querySelector(`.nav-item[data-view="${viewId}"]`);
+  if (activeNav) activeNav.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateStats() {
+  const totalDone = state.done.length;
+  document.getElementById('totalDoneText').innerText = `${totalDone}/100`;
+  document.getElementById('progressBar').style.width = `${(totalDone / 100) * 100}%`;
+  
+  const todayRemaining = Math.max(0, 3 - state.todayDoneCount);
+  document.getElementById('todayCountText').innerText = `${state.todayDoneCount}/3`;
+  
+  let heartsHtml = '';
+  for(let i=0; i<3; i++) {
+    heartsHtml += i < state.todayDoneCount ? '💖 ' : '🤍 ';
+  }
+  document.getElementById('heartsDisplay').innerText = heartsHtml;
+}
+
+function renderDailyCards() {
+  const container = document.getElementById('dailyCardsGrid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let uncompleted = CHALLENGES.map((item, idx) => ({ ...item, originalIdx: idx }))
+    .filter(item => !state.done.includes(item.originalIdx));
+
+  let dailySet = uncompleted.slice(0, 3);
+
+  dailySet.forEach((item, i) => {
+    const isLocked = state.todayDoneCount >= 3;
+    const card = document.createElement('div');
+    card.className = `challenge-card ${isLocked ? 'locked' : ''}`;
+    card.innerHTML = `
+      <span class="badge">#${item.originalIdx + 1}</span>
+      <div class="card-img-placeholder">🌸</div>
+      <h3>${item.title}</h3>
+      <p>${item.hint}</p>
+      <button class="btn-card" onclick="startChallenge(${item.originalIdx})">
+        ${isLocked ? 'غداً ✨' : 'Commencer ➔'}
+      </button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderAllChallenges() {
+  const grid = document.getElementById('allChallengesGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  CHALLENGES.forEach((item, idx) => {
+    const isDone = state.done.includes(idx);
+    const card = document.createElement('div');
+    card.className = 'challenge-card';
+    card.innerHTML = `
+      <span class="badge">#${idx + 1}</span>
+      ${isDone ? '<span class="status-pill">تم ✅</span>' : ''}
+      <div class="card-img-placeholder" style="height:80px; font-size:32px;">🌹</div>
+      <h3>${item.title}</h3>
+      <p>${item.hint}</p>
+      <button class="btn-card" onclick="${isDone ? `openPoemModal('${item.title}', '${item.poem.join('<br>')}')` : `startChallenge(${idx})`}">
+        ${isDone ? 'اقرئي القصيدة 💌' : 'خوض التحدي'}
+      </button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderPoems() {
+  const grid = document.getElementById('poemGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  CHALLENGES.forEach((item, idx) => {
+    const isUnlocked = state.done.includes(idx);
+    const card = document.createElement('div');
+    card.className = `challenge-card ${!isUnlocked ? 'locked' : ''}`;
+    card.innerHTML = `
+      <span class="badge">#${idx + 1}</span>
+      <div class="card-img-placeholder" style="height:70px; font-size:30px;">💌</div>
+      <h3>${item.title}</h3>
+      <p>${isUnlocked ? item.poem[0] : 'مقفل حتى إنجاز التحدي 🔒'}</p>
+      <button class="btn-card" onclick="${isUnlocked ? `openPoemModal('${item.title}', '${item.poem.join('<br>')}')` : `showToast('أكملي التحدي أولاً! 🌸')`}">
+        ${isUnlocked ? 'اقرئي القصيدة 💌' : 'مقفل 🔒'}
+      </button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function startChallenge(idx) {
+  if (state.todayDoneCount >= 3 && !state.done.includes(idx)) {
+    showToast('لقد أنهيتِ تحديات اليوم الثلاثة! عد غداً 💗');
+    return;
+  }
+  
+  activeChallengeIdx = idx;
+  const challenge = CHALLENGES[idx];
+  showView('game');
+  
+  const arena = document.getElementById('arena');
+  document.getElementById('gameCounter').innerText = `#${idx + 1} - ${challenge.title}`;
+  arena.innerHTML = `
+    <h2>${challenge.title}</h2>
+    <p style="text-align:center; opacity:0.8;">${challenge.hint}</p>
+    <div id="gamePlayArea" style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:280px; margin-top:20px;">
+      <div id="targetObj" style="font-size:70px; cursor:pointer; transition:transform 0.1s;">🌹</div>
+    </div>
+  `;
+
+  let clicks = 0;
+  const targetObj = document.getElementById('targetObj');
+  
+  targetObj.onclick = () => {
+    clicks++;
+    targetObj.style.transform = `scale(${1 + clicks*0.15})`;
+    if (clicks >= 5) {
+      completeChallenge(idx);
+    }
+  };
+}
+
+function completeChallenge(idx) {
+  if (!state.done.includes(idx)) {
+    state.done.push(idx);
+    state.todayDoneCount++;
+    localStorage.setItem('rose_app_state', JSON.stringify(state));
+  }
+  
+  updateStats();
+  renderDailyCards();
+  renderAllChallenges();
+  renderPoems();
+  
+  const challenge = CHALLENGES[idx];
+  openPoemModal(challenge.title, challenge.poem.join('<br>'));
+}
+
+function openPoemModal(title, text) {
+  document.getElementById('poemTitle').innerText = title;
+  document.getElementById('poemText').innerHTML = text;
+  document.getElementById('poemModal').classList.add('show');
+}
+
+function closePoem() {
+  document.getElementById('poemModal').classList.remove('show');
+  showView('home');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.innerText = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+function toggleAudio() {
+  showToast('🎵 Sound toggled!');
+}
+
+function resetAll() {
+  if (confirm("Voulez-vous vraiment réinitialiser toute la progression ?")) {
+    localStorage.removeItem('rose_app_state');
+    state = { done: [], lastDate: TODAY_STR, todayDoneCount: 0 };
+    initApp();
+    showToast('تمت إعادة الضبط بنجاح!');
+  }
+}
+
+// Start app on window load
+window.onload = initApp;
 </script>
 </body>
 </html>
