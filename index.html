@@ -616,6 +616,18 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;backg
 @media(max-width:960px){.sidebar{width:78px}.brand-icon{width:58px}.main-wrapper{margin-left:78px;width:calc(100% - 78px)}.cards-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.sidebar{width:0;padding:0;border:0;overflow:hidden}.main-wrapper{margin-left:0;width:100%;padding:10px}.top-bar{right:12px;top:12px}.hero-banner{height:410px;min-height:410px;border-radius:22px 22px 0 0}.hero-banner h2{font-size:48px}.hero-banner:before{width:45%}.hero-banner:after{width:35%}.dashboard-grid{grid-template-columns:1fr}.dashboard-grid>.glass-card{border-radius:0 0 0 0}.side-widgets{border-radius:0 0 22px 22px}.cards-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="date-night-love-upgrade">
+.date-love-note{margin:0 auto 22px;padding:17px 18px;max-width:430px;border-radius:22px;background:linear-gradient(135deg,#fff0f7,#f5eaff);border:1px solid #ffd0e3;color:#8d2455;font-size:16px;line-height:1.65;box-shadow:0 10px 28px #a72c5b20;animation:dateNoteIn .7s cubic-bezier(.2,.8,.2,1) both}
+.date-love-note .date-stamp{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b34a79;font-weight:900;margin-bottom:7px}
+.date-love-note .date-heart{display:block;font-size:38px;margin-bottom:5px;animation:heartBeat 1.1s ease-in-out infinite}
+@keyframes dateNoteIn{from{opacity:0;transform:translateY(18px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+.date-glow{position:fixed;inset:0;pointer-events:none;z-index:99;background:radial-gradient(circle at center,#ff8db933,transparent 65%);animation:dateGlow .9s ease-out forwards}
+@keyframes dateGlow{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.date-love-note,.date-love-note .date-heart,.date-glow{animation:none!important}}
+</style>
+
 </head>
 <body>
 
@@ -902,6 +914,7 @@ function renderPoems() {
 
 
 function startChallenge(idx){
+  successBurst();
   if(state.todayDoneCount>=3 && !state.done.includes(idx)){showToast('🌙 تحديات اليوم اكتملت. عودي غداً!');return;}
   activeChallengeIdx=idx;
   const c=CHALLENGES[idx];
@@ -999,9 +1012,35 @@ function completeChallenge(idx) {
 }
 
 function openPoemModal(title, text) {
+  const modal = document.getElementById('poemModal');
   document.getElementById('poemTitle').innerText = title;
   document.getElementById('poemText').innerHTML = text;
-  document.getElementById('poemModal').classList.add('show');
+
+  // Each challenge gets its own romantic note, while the date message is special today.
+  const challengeIndex = CHALLENGES.findIndex(item => item.title === title);
+  const notes = [
+    { emoji: '🌹', heading: 'Notre petit rendez-vous', message: 'Aujourd’hui, je ne veux pas seulement passer du temps avec toi… je veux créer un souvenir que nous garderons tous les deux dans notre cœur. Tu rends les moments simples inoubliables.' },
+    { emoji: '💗', heading: 'Juste toi et moi', message: 'Si je pouvais choisir encore et encore avec qui passer cette journée, je te choisirais toi. Ton sourire est mon endroit préféré, et aujourd’hui est une nouvelle petite page de notre histoire.' },
+    { emoji: '✨', heading: 'Un souvenir à nous', message: 'Regarde bien, mon amour : ce n’est pas juste un défi. C’est ma petite façon de te dire que je suis heureux de te retrouver aujourd’hui. J’espère que notre rendez-vous sera rempli de rires, de douceur et de beaux souvenirs.' }
+  ];
+  const note = notes[Math.max(0, challengeIndex) % notes.length];
+  let loveNote = document.getElementById('dateLoveNote');
+  if (!loveNote) {
+    loveNote = document.createElement('div');
+    loveNote.id = 'dateLoveNote';
+    loveNote.className = 'date-love-note';
+    document.getElementById('poemText').insertAdjacentElement('afterend', loveNote);
+  }
+  const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  loveNote.innerHTML = `<span class="date-heart">${note.emoji}</span><div class="date-stamp">${note.heading} · ${today}</div>${note.message}<br><strong>Je suis impatient de te voir aujourd’hui ❤️</strong>`;
+
+  modal.classList.add('show');
+  // Little glowing burst and falling rose petals whenever she opens a love surprise.
+  const glow = document.createElement('div');
+  glow.className = 'date-glow';
+  document.body.appendChild(glow);
+  setTimeout(() => glow.remove(), 1000);
+  successBurst();
 }
 
 function closePoem() {
